@@ -1,9 +1,9 @@
-/* Refined layout (Nov 2026): Newsreader headings, Geist text, warm paper, cobalt accent.
+/* Refined layout (Nov 2026): Bricolage Grotesque headings (was Newsreader), Geist text, warm paper, cobalt accent.
    Earlier versions: _versions/v10-studio/ (Studio), _versions/v9-riso-before-studio/ (Riso). */
 :root{
   --paper:#fbfaf7;--raised:#ffffff;--ink:#17161a;--text:#45434a;--soft:#7c7a80;--line:#e7e3dc;
   --blue:#2a5fb0;--wire:#3070c8;--red:#c85058;--live:#2f7a4b;
-  --serif:'Newsreader',Georgia,serif;--sans:'Geist',system-ui,-apple-system,sans-serif
+  --display:'Bricolage Grotesque',system-ui,sans-serif;--sans:'Geist',system-ui,-apple-system,sans-serif
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -35,7 +35,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 
 /* Hero */
 .hero{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center;padding:84px 0 92px}
-h1{font:400 clamp(40px,4.6vw,60px)/1.08 var(--serif);color:var(--ink);letter-spacing:-.018em}
+h1{font:700 clamp(40px,4.6vw,60px)/1.05 var(--display);color:var(--ink);letter-spacing:-.03em}
 .lead{font-size:18.5px;margin-top:26px;max-width:540px}
 .actions{display:flex;align-items:center;gap:26px;margin-top:34px}
 .proof{margin-top:38px;padding-top:18px;border-top:1px solid var(--line);font-size:14.5px;color:var(--soft);max-width:540px}
@@ -53,9 +53,9 @@ h1{font:400 clamp(40px,4.6vw,60px)/1.08 var(--serif);color:var(--ink);letter-spa
 /* Sections */
 .section{padding:84px 0 0}
 .head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;padding-bottom:30px;border-bottom:1px solid var(--line)}
-h2{font:400 clamp(30px,3.2vw,42px)/1.12 var(--serif);color:var(--ink);letter-spacing:-.012em}
+h2{font:700 clamp(30px,3.2vw,42px)/1.1 var(--display);color:var(--ink);letter-spacing:-.028em}
 .head p{font-size:16.5px;max-width:470px}
-h3{font:500 21px/1.3 var(--serif);color:var(--ink)}
+h3{font:600 20px/1.3 var(--display);color:var(--ink);letter-spacing:-.012em}
 
 /* Demos */
 .demos{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:36px}
@@ -79,7 +79,7 @@ h3{font:500 21px/1.3 var(--serif);color:var(--ink)}
 .status{font-size:13.5px;color:var(--soft);margin-bottom:8px}
 .status.live{color:var(--live)}
 .status.live:before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--live);margin-right:8px;vertical-align:1px}
-.app h3{font-size:28px;font-weight:400;margin-bottom:10px}
+.app h3{font-size:28px;font-weight:700;letter-spacing:-.025em;margin-bottom:10px}
 .app p{font-size:15.5px}
 .app p+p{margin-top:10px}
 .stack{font-size:14px!important;color:var(--soft);margin-top:14px!important}
