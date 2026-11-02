@@ -25,9 +25,9 @@
   if(typeof module!=='undefined' && module.exports){module.exports={lines};return;}
   const canvas=document.getElementById('form');if(!canvas)return;
   const ctx=canvas.getContext('2d');if(!ctx)return;
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)'), small=matchMedia('(max-width:570px)');
-  let yaw=-.55,pitch=.22,drag=false,lastX=0,lastY=0,pending=0;
-  function draw(){pending=0;const size=canvas.clientWidth;if(!size||reduced.matches||small.matches)return;
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)'), touchy=matchMedia('(pointer:coarse)');
+  let yaw=-.55,pitch=.22,drag=false,lastX=0,lastY=0,pending=0,touched=false,visible=false,spin=0;
+  function draw(){pending=0;const size=canvas.clientWidth;if(!size||reduced.matches)return;
     const density=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(size*density);canvas.height=Math.round(size*density);ctx.setTransform(density,0,0,density,0,0);
     const colors=getComputedStyle(document.documentElement),blue=colors.getPropertyValue('--wire').trim(),red=colors.getPropertyValue('--red').trim();
     const paths=lines(yaw,pitch);
@@ -41,11 +41,15 @@
     ctx.globalAlpha=1;canvas.classList.add('ready');
   }
   function schedule(){if(!pending)pending=requestAnimationFrame(draw);}
-  canvas.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')return;drag=true;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId);});
-  canvas.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-lastX)*.009;pitch=Math.max(-1.4,Math.min(1.4,pitch+(e.clientY-lastY)*.009));lastX=e.clientX;lastY=e.clientY;schedule();});
+  canvas.addEventListener('pointerdown',e=>{touched=true;drag=true;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId);});
+  // On touch, only sideways swipes turn the form; touch-action:pan-y leaves vertical swipes to page scrolling.
+  canvas.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-lastX)*.009;if(e.pointerType!=='touch')pitch=Math.max(-1.4,Math.min(1.4,pitch+(e.clientY-lastY)*.009));lastX=e.clientX;lastY=e.clientY;schedule();});
   for(const event of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(event,()=>drag=false);
   canvas.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))return;e.preventDefault();if(e.key==='Home'){yaw=-.55;pitch=.22;}else{yaw+=(e.key==='ArrowRight'?.12:e.key==='ArrowLeft'?-.12:0);pitch=Math.max(-1.4,Math.min(1.4,pitch+(e.key==='ArrowDown'?.12:e.key==='ArrowUp'?-.12:0)));}schedule();});
   new ResizeObserver(schedule).observe(canvas);new MutationObserver(schedule).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
-  for(const query of [reduced,small,matchMedia('(prefers-color-scheme:dark)')])query.addEventListener('change',schedule);
+  for(const query of [reduced,matchMedia('(prefers-color-scheme:dark)')])query.addEventListener('change',schedule);
+  // On touch screens nobody hovers or drags by accident, so turn slowly while visible until the first touch.
+  function idle(){spin=0;if(!visible||touched||reduced.matches||!touchy.matches)return;yaw+=.006;draw();spin=requestAnimationFrame(idle);}
+  new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible&&!spin)idle();}).observe(canvas);
   draw();
 })();
