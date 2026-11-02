@@ -132,12 +132,12 @@
           <dt>Status</dt><dd><span class="badge">Used daily in therapy centres</span></dd>
         </dl>
       </div>
-      <p>A communication app for people who can't speak. They tap pictures of words and the app says them aloud in Georgian, with the right word forms and a voice that can sound happy, sad or angry.</p>
+      <p>A communication app for nonverbal children and adults. They tap pictures of words and the app says them aloud in Georgian, with the right word forms and a voice that can sound happy, sad or angry.</p>
       <button class="watch" type="button" data-video="assets/video/aron.mp4" data-poster="assets/video/aron.webp" data-title="Aron" data-portrait>Watch it in use <span aria-hidden="true">▶</span> 0:52 · sound</button>
       <details class="case" id="c-aron">
         <summary>Read the case study</summary>
         <h4>The problem</h4>
-        <p>Children who cannot speak need a quick way to say what they want, and there were few such tools in Georgian.</p>
+        <p>Nonverbal children need a quick way to say what they want, and there were few such tools in Georgian.</p>
         <h4>What I built</h4>
         <p>Aron is a communication app: people pick words on screen and the app says them aloud. I designed the product and UX (name, visual style, core interactions) and built it.</p>
         <ul>
@@ -168,7 +168,7 @@
           <dt>Status</dt><dd>In development · private Android alpha</dd>
         </dl>
       </div>
-      <p>A Georgian learning app: a path of short lessons from the alphabet to everyday conversations, with recorded voices, letter tracing and games.</p>
+      <p>A Georgian learning app: a path of short lessons from the alphabet to everyday conversations, with spoken audio, letter tracing and games.</p>
       <button class="watch" type="button" data-video="assets/video/jacob.mp4" data-poster="assets/video/jacob.webp" data-title="Jacob" data-portrait>Watch it in use <span aria-hidden="true">▶</span> 1:28 · sound</button>
       <details class="case" id="c-jacob">
         <summary>Read the case study</summary>
@@ -179,7 +179,7 @@
         <ul>
           <li>223 lessons for each explanation language (English, Russian and Greek), from the first two letters to conversations.</li>
           <li>Letter cards, tracing along stroke guides, quizzes, word building, matching games, stories and role-plays.</li>
-          <li>Voices recorded once with Gemini text-to-speech and bundled into the app, so the first 36 lessons work offline.</li>
+          <li>AI voices made once with Gemini text-to-speech and bundled into the app, so the first 36 lessons work offline.</li>
           <li>An optional area for Georgia’s two historical scripts, with letter charts, recognition rounds and tracing.</li>
           <li>Lessons are generated from a curriculum plan and content files, then played through by a test bot. 133 automated tests.</li>
         </ul>
@@ -198,7 +198,7 @@
         <p class="project-kind">Internal tools · 2026</p><h3 class="t">Operations <br>planning app</h3>
         <dl>
           <dt>Tools</dt><dd>Power Apps, SharePoint, Power Automate, Azure OpenAI</dd>
-          <dt>Where</dt><dd>In-house, at my current employer (a construction company in Slovenia)</dd>
+          <dt>Client</dt><dd>A construction company in Slovenia</dd>
           <dt>Scope</dt><dd>Plans, job cards, crews, materials, hours</dd>
           <dt>Role</dt><dd>Design and build</dd>
         </dl>
@@ -207,7 +207,7 @@
       <details class="case" id="c-ops">
         <summary>Read the case study</summary>
         <h4>The problem</h4>
-        <p>The construction company I work for needed one place to plan its field work: which crews go where, what they need on site, and how many hours each job takes.</p>
+        <p>A construction company needed one place to plan its field work: which crews go where, what they need on site, and how many hours each job takes.</p>
         <h4>What I built</h4>
         <p>I designed and built the company's planning system: the screens, the data structure and the automations behind them. It brings scheduling, crews, materials, hours and reporting into one app, with a dedicated view for each role: managers, planners, warehouse staff and site crews.</p>
         <ul>
@@ -219,7 +219,7 @@
         </ul>
         <h4>Design</h4>
         <p>I designed every screen and a set of shared interface components, including a phone layout made for crews on site.</p>
-        <p class="note">Built at my current job and covered by an NDA, so there are no screenshots or figures. The employer is named on my CV.</p>
+        <p class="note">Covered by an NDA, so there are no screenshots or figures.</p>
       </details>
     </div>
   </div>
@@ -232,8 +232,8 @@
       <div class="wall-label">
         <p class="project-kind">Local AI · 2026</p><h3 class="t">Kvant Assistant</h3>
         <dl>
-          <dt>Tools</dt><dd>Python, Qdrant, Mistral via Ollama, Streamlit</dd>
-          <dt>Result</dt><dd>14/15 in an LLM-judged evaluation</dd>
+          <dt>Tools</dt><dd>Python, Qdrant, Qwen 2.5 via Ollama, Streamlit</dd>
+          <dt>Result</dt><dd>14 of 15 test questions, the same on every run</dd>
           <dt>Code</dt><dd><a href="https://github.com/cesicobrad/kvant-assistant">View on GitHub →</a></dd>
         </dl>
       </div>
@@ -245,11 +245,11 @@
         <h4>What I built</h4>
         <p>Kvant searches the documents and uses what it finds to answer, in Slovenian or English. Everything runs locally.</p>
         <ul>
-          <li>Multilingual embeddings and Qdrant handle document search. Mistral runs through Ollama to generate answers.</li>
+          <li>Hybrid search: keyword matching for exact names and figures, plus multilingual embeddings in Qdrant for meaning. Qwen 2.5 14B runs through Ollama to write the answers.</li>
           <li>Answers cite their source documents. The assistant is set up to decline questions the documents cannot answer.</li>
         </ul>
         <h4>Result</h4>
-        <p>14 of 15 evaluation questions answered correctly, graded by a language model.</p>
+        <p>14 of 15 test questions answered correctly, with the same result on three separate runs. The one miss is a question the assistant declines rather than guesses.</p>
       </details>
     </div>
   </div>
@@ -276,11 +276,11 @@
   <details id="c-leads">
     <summary><span class="n">06</span><h3>Lead-to-offer automation</h3><span class="plus" aria-hidden="true"></span></summary>
     <div class="entry">
-      <div class="meta">My current job<br>Construction, Slovenia<br>2026<br>Python · Microsoft Graph<br>Linux</div>
+      <div class="meta">Construction company<br>Slovenia<br>2026<br>Python · Microsoft Graph<br>Linux</div>
       <div class="text">
         <p>I started from a search-based lead scraper that didn't work. I rewrote its logic so it finds usable leads, then built everything after it: public-register and ownership checks, scheduled outreach emails, reply handling and automatic PDF offers.</p>
         <p>A human approval step makes sure nothing reaches a client unreviewed.</p>
-        <p class="note">Built at my current job, under an NDA.</p>
+        <p class="note">Covered by an NDA.</p>
       </div>
     </div>
   </details>
