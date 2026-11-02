@@ -38,3 +38,16 @@
   }));
  });
 })();
+
+(() => {
+ const viewer=document.getElementById('video-viewer');if(!viewer)return;
+ const video=document.getElementById('viewer-video'),title=document.getElementById('video-title');
+ document.querySelectorAll('[data-video]').forEach(button=>button.addEventListener('click',()=>{
+  viewer.classList.toggle('portrait',button.hasAttribute('data-portrait'));
+  title.textContent=button.dataset.title||'';
+  video.poster=button.dataset.poster||'';video.src=button.dataset.video;
+  viewer.showModal();video.play().catch(()=>{});
+ }));
+ viewer.addEventListener('close',()=>{video.pause();video.removeAttribute('src');video.load();});
+ viewer.addEventListener('click',event=>{if(event.target===viewer)viewer.close();});
+})();
