@@ -132,3 +132,8 @@ footer a{color:var(--soft);text-decoration:none}
   .contact{margin-top:72px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+.app ul{margin:12px 0 0 18px;font-size:15.5px}
+.app li+li{margin-top:4px}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:18px 48px;margin:32px 0 0 20px;font-size:16.5px}
+.steps b{color:var(--ink);font-weight:500}
+@media(max-width:980px){.steps{grid-template-columns:1fr}}
