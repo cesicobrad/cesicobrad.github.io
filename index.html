@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=refined-1">
+<link rel="stylesheet" href="styles.css?v=refined-2">
 </head>
 <body>
 <a class="skip" href="#work">Skip to the work</a>
@@ -45,12 +45,10 @@
     </div>
     <p class="proof">Live app on the App Store and Google Play. Public demos with tests and code.</p>
   </div>
-  <div class="collage" aria-label="Screens from my projects">
-    <button class="c-wide" data-video="assets/video/nora.mp4" aria-label="Play video with sound: voice receptionist"><img src="assets/video/nora.webp" alt="Nora, a voice receptionist, booking a dental appointment"></button>
-    <button class="c-phone c-one" data-video="assets/video/aron.mp4" data-tall aria-label="Play video with sound: Aron"><img src="assets/aron-store-grid.webp" alt="Aron's Georgian word board"></button>
-    <button class="c-phone c-two" data-video="assets/video/jacob.mp4" data-tall aria-label="Play video with sound: Jacob"><img src="assets/jacob-map.webp" alt="Jacob's lesson path"></button>
-    <span class="c-note">Click a screen to play the video</span>
-  </div>
+  <figure class="sculpture">
+    <div class="stage"><img src="form.svg" alt="An abstract rounded form drawn in cobalt lines with an offset red outline" width="640" height="640"><canvas id="form" role="img" tabindex="0" aria-label="Interactive wireframe form. Drag or use the arrow keys to rotate. Press Home to reset."></canvas></div>
+    <figcaption>Drag to rotate</figcaption>
+  </figure>
 </section>
 
 <section class="section wrap" id="work">
@@ -150,5 +148,6 @@
 
 <footer class="wrap"><span>© 2026 Obrad Ćešić</span><a href="#">Back to top ↑</a></footer>
 <script src="app.js?v=studio-1" defer></script>
+<script src="sculpture.js" defer></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
    Earlier versions: _versions/v10-studio/ (Studio), _versions/v9-riso-before-studio/ (Riso). */
 :root{
   --paper:#fbfaf7;--raised:#ffffff;--ink:#17161a;--text:#45434a;--soft:#7c7a80;--line:#e7e3dc;
-  --blue:#2a5fb0;--red:#c85058;--live:#2f7a4b;
+  --blue:#2a5fb0;--wire:#3070c8;--red:#c85058;--live:#2f7a4b;
   --serif:'Newsreader',Georgia,serif;--sans:'Geist',system-ui,-apple-system,sans-serif
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -41,17 +41,14 @@ h1{font:400 clamp(40px,4.6vw,60px)/1.08 var(--serif);color:var(--ink);letter-spa
 .proof{margin-top:38px;padding-top:18px;border-top:1px solid var(--line);font-size:14.5px;color:var(--soft);max-width:540px}
 .proof:before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--live);margin-right:10px;vertical-align:1px}
 
-/* Hero collage: real screens, each one opens its video */
-.collage{position:relative;aspect-ratio:1/0.86}
-.collage button{position:absolute;border:0;padding:0;cursor:pointer;background:var(--raised);overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
-.collage button:hover{transform:translateY(-4px)}
-.collage img{width:100%;height:100%;object-fit:cover;object-position:top left}
-.c-wide{left:0;top:4%;width:80%;aspect-ratio:16/10;border-radius:6px;box-shadow:0 1px 0 var(--line),0 18px 40px -18px #17161a40;outline:1px solid var(--line)}
-.c-phone{width:27%;aspect-ratio:9/19.5;border-radius:16px;box-shadow:0 22px 44px -16px #17161a55;outline:5px solid #17161a}
-.c-phone img{object-position:top center}
-.c-one{right:29%;bottom:0}
-.c-two{right:0;bottom:7%}
-.c-note{position:absolute;left:0;bottom:2%;font-size:13.5px;color:var(--soft)}
+/* Hero form: the interactive wireframe (sculpture.js), with form.svg as the static fallback */
+.sculpture{margin:0;justify-self:center;width:min(100%,520px)}
+.stage{position:relative;aspect-ratio:1}
+.stage img,.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.stage canvas{cursor:grab;touch-action:pan-y}
+.stage canvas:active{cursor:grabbing}
+.sculpture:has(canvas.ready) img{visibility:hidden}
+.sculpture figcaption{text-align:center;font-size:13px;color:var(--soft);margin-top:-6px}
 
 /* Sections */
 .section{padding:84px 0 0}
@@ -110,7 +107,7 @@ footer a{color:var(--soft);text-decoration:none}
 
 @media(max-width:980px){
   .hero{grid-template-columns:1fr;gap:56px;padding-top:56px}
-  .collage{max-width:620px}
+  .sculpture{width:min(100%,440px)}
   .demos,.list{grid-template-columns:1fr 1fr}
   .apps{grid-template-columns:1fr;gap:48px}
   .head,.approach .prose,.contact{grid-template-columns:1fr;gap:16px}
@@ -124,14 +121,16 @@ footer a{color:var(--soft);text-decoration:none}
   .top nav a:not(.nav-cta):not([href="#work"]){display:none}
   .hero{padding:40px 0 64px}
   .lead{font-size:17px}
-  .c-note{display:none}
+  .sculpture{width:72%}
+  .sculpture figcaption{display:none}
   .demos,.list{grid-template-columns:1fr;gap:44px}
   .app{grid-template-columns:120px 1fr;gap:20px}
   .app h3{font-size:24px}
   .section{padding-top:64px}
   .contact{margin-top:72px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.stage canvas{display:none}.sculpture:has(canvas.ready) img{visibility:visible}.sculpture figcaption{display:none}}
+@media(max-width:570px){.stage canvas{display:none}.sculpture:has(canvas.ready) img{visibility:visible}}
 .app ul{margin:12px 0 0 18px;font-size:15.5px}
 .app li+li{margin-top:4px}
 .steps{display:grid;grid-template-columns:1fr 1fr;gap:18px 48px;margin:32px 0 0 20px;font-size:16.5px}
