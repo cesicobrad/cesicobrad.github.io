@@ -233,7 +233,7 @@
         <p class="project-kind">Local AI · 2026</p><h3 class="t">Kvant Assistant</h3>
         <dl>
           <dt>Tools</dt><dd>Python, Qdrant, Qwen 2.5 via Ollama, Streamlit</dd>
-          <dt>Result</dt><dd>14 of 15 test questions, the same on every run</dd>
+          <dt>Result</dt><dd>15 of 15 test questions, plus 11 of 11 new ones</dd>
           <dt>Code</dt><dd><a href="https://github.com/cesicobrad/kvant-assistant">View on GitHub →</a></dd>
         </dl>
       </div>
@@ -247,9 +247,10 @@
         <ul>
           <li>Hybrid search: keyword matching for exact names and figures, plus multilingual embeddings in Qdrant for meaning. Qwen 2.5 14B runs through Ollama to write the answers.</li>
           <li>Answers cite their source documents. The assistant is set up to decline questions the documents cannot answer.</li>
+          <li>Each passage carries its document's title, and no single document can fill all the slots, so answers that need several documents get them.</li>
         </ul>
         <h4>Result</h4>
-        <p>14 of 15 test questions answered correctly, with the same result on three separate runs. The one miss is a question the assistant declines rather than guesses.</p>
+        <p>15 of 15 test questions answered correctly on three separate runs, and 11 of 11 on a second set written afterwards, including one in Slovenian and two the documents can't answer.</p>
       </details>
     </div>
   </div>
