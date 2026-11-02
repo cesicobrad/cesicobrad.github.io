@@ -1,53 +1,22 @@
+// Shared by the design options: plays a video in a dialog when a [data-video] element is clicked.
 (() => {
-  const root=document.documentElement,button=document.querySelector('.theme-toggle');
-  const modes=['auto','dark','light'];let mode='auto';
-  try{const saved=localStorage.getItem('obrad-appearance');if(modes.includes(saved))mode=saved;}catch{}
-  function setTheme(){if(mode==='auto')delete root.dataset.theme;else root.dataset.theme=mode;
-    const label=mode==='auto'?'Auto':mode==='dark'?'Dark':'Light';
-    button.innerHTML=label+' <span aria-hidden="true">◐</span>';
-    button.setAttribute('aria-label','Change appearance. Current setting: '+(mode==='auto'?'automatic':mode));
-    const dark=mode==='dark'||(mode==='auto'&&matchMedia('(prefers-color-scheme:dark)').matches);
-    document.querySelector('.sculpture img').src=dark?'form-dark.svg':'form.svg';
-  }
-  button.addEventListener('click',()=>{mode=modes[(modes.indexOf(mode)+1)%modes.length];try{localStorage.setItem('obrad-appearance',mode);}catch{}setTheme();});
-  matchMedia('(prefers-color-scheme:dark)').addEventListener('change',setTheme);setTheme();
-  function openFromHash(){const target=document.getElementById(location.hash.slice(1));if(target?.tagName==='DETAILS'){target.open=true;requestAnimationFrame(()=>target.scrollIntoView({block:'start'}));}}
-  addEventListener('hashchange',openFromHash);openFromHash();
-  document.querySelectorAll('a[href^="#c-"]').forEach(link=>link.addEventListener('click',()=>{if(link.hash===location.hash)openFromHash();}));
-  document.getElementById('year').textContent=new Date().getFullYear();
-})();
-
-(() => {
- const viewer=document.getElementById('screenshot-viewer');if(!viewer)return;
- const img=document.getElementById('viewer-image'),caption=document.getElementById('viewer-caption');
- document.querySelectorAll('[data-screenshot]').forEach(button=>button.addEventListener('click',()=>{
-  img.src=button.dataset.screenshot;img.alt=button.querySelector('img').alt;caption.textContent=button.dataset.caption;viewer.showModal();
- }));
- viewer.addEventListener('click',event=>{if(event.target===viewer)viewer.close();});
-})();
-
-(() => {
- document.querySelectorAll('[data-gallery]').forEach(gallery=>{
-  const shot=gallery.querySelector('[data-screenshot]'),image=shot.querySelector('img'),art=gallery.querySelector('.app-visual');
-  gallery.querySelectorAll('[data-shot]').forEach(tab=>tab.addEventListener('click',()=>{
-   shot.dataset.screenshot=tab.dataset.shot;shot.dataset.caption=tab.dataset.caption;
-   shot.setAttribute('aria-label','Open full screenshot: '+tab.dataset.caption);
-   image.src=tab.dataset.shot;image.alt=tab.dataset.alt;
-   art.classList.remove('top','bottom','center');art.classList.add(tab.dataset.position);
-   gallery.querySelectorAll('[data-shot]').forEach(item=>{const active=item===tab;item.classList.toggle('active',active);item.setAttribute('aria-pressed',String(active));});
+  const d = document.createElement('dialog');
+  d.className = 'vplayer';
+  d.innerHTML = '<button class="vclose" aria-label="Close video">Close ×</button><video controls playsinline></video>';
+  document.body.appendChild(d);
+  const v = d.querySelector('video');
+  document.querySelectorAll('[data-video]').forEach((el) => el.addEventListener('click', () => {
+    d.classList.toggle('tall', el.hasAttribute('data-tall'));
+    v.src = el.dataset.video; d.showModal(); v.play().catch(() => {});
   }));
- });
-})();
-
-(() => {
- const viewer=document.getElementById('video-viewer');if(!viewer)return;
- const video=document.getElementById('viewer-video'),title=document.getElementById('video-title');
- document.querySelectorAll('[data-video]').forEach(button=>button.addEventListener('click',()=>{
-  viewer.classList.toggle('portrait',button.hasAttribute('data-portrait'));
-  title.textContent=button.dataset.title||'';
-  video.poster=button.dataset.poster||'';video.src=button.dataset.video;
-  viewer.showModal();video.play().catch(()=>{});
- }));
- viewer.addEventListener('close',()=>{video.pause();video.removeAttribute('src');video.load();});
- viewer.addEventListener('click',event=>{if(event.target===viewer)viewer.close();});
+  d.querySelector('.vclose').addEventListener('click', () => d.close());
+  d.addEventListener('click', (e) => { if (e.target === d) d.close(); });
+  d.addEventListener('close', () => { v.pause(); v.removeAttribute('src'); v.load(); });
+  const s = document.createElement('style');
+  s.textContent = `.vplayer{border:0;padding:44px 12px 12px;background:#0b0c0f;border-radius:14px;width:min(94vw,1100px);max-height:96vh;overflow:hidden}
+  .vplayer.tall{width:auto}.vplayer::backdrop{background:#000c}.vplayer video{display:block;width:100%;max-height:calc(96vh - 60px);margin:auto;border-radius:8px}
+  .vplayer.tall video{width:auto;height:calc(92vh - 60px);max-width:100%}
+  .vclose{position:absolute;top:9px;right:12px;border:0;background:#ffffff1a;color:#fff;font:500 13px system-ui,sans-serif;padding:6px 12px;border-radius:999px;cursor:pointer}
+  @media(max-width:600px){.vplayer.tall video{height:auto;width:100%}}`;
+  document.head.appendChild(s);
 })();
