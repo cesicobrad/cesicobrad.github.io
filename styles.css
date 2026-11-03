@@ -58,7 +58,7 @@ h2{font:400 clamp(32px,3.4vw,44px)/1.1 var(--display);color:var(--ink);letter-sp
 h3{font:400 23px/1.25 var(--display);color:var(--ink);letter-spacing:-.005em}
 
 /* Demos */
-.demos{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:36px}
+.demos{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 48px;margin-top:36px}
 .demo{display:flex;flex-direction:column}
 .thumb{position:relative;display:block;width:100%;aspect-ratio:16/10;border:0;padding:0;cursor:pointer;background:#efece6;border-radius:6px;overflow:hidden;outline:1px solid var(--line);margin-bottom:20px}
 .thumb img{width:100%;height:100%;object-fit:cover;object-position:top left;transition:transform .35s ease}
