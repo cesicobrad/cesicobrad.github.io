@@ -1,7 +1,7 @@
 /* Refined layout (Nov 2026): Castoro headings (picked by Obrad in the font picker; earlier Newsreader, then Bricolage), Geist text, warm paper, cobalt accent.
    Earlier versions: _versions/v10-studio/ (Studio), _versions/v9-riso-before-studio/ (Riso). */
 :root{
-  --paper:#fbfaf7;--raised:#ffffff;--ink:#17161a;--text:#45434a;--soft:#7c7a80;--line:#e7e3dc;
+  --paper:#fbfaf7;--raised:#ffffff;--ink:#17161a;--text:#45434a;--soft:#6c6a71;--line:#e7e3dc;
   --blue:#2a5fb0;--wire:#3070c8;--red:#c85058;--live:#2f7a4b;
   --display:'Castoro',Georgia,serif;--sans:'Geist',system-ui,-apple-system,sans-serif
 }
@@ -83,7 +83,7 @@ h3{font:400 23px/1.25 var(--display);color:var(--ink);letter-spacing:-.005em}
 .app p{font-size:15.5px}
 .app p+p{margin-top:10px}
 .stack{font-size:14px!important;color:var(--soft);margin-top:14px!important}
-.stack a{color:var(--blue);text-decoration:none}
+.stack a{color:var(--blue);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 
 /* More work */
 .list{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:36px}
