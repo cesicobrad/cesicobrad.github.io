@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI chat assistant with staff handover: bike workshop demo · Obrad Ćešić</title>
+<meta name="description" content="A demo AI chat assistant for a bike workshop: answers prices and hours in three languages, hands repairs to staff with photos, and sends quotes the customer can accept. Built with n8n and Claude.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://obradcesic.com/demos/ai-chat-assistant/">
+<meta property="og:title" content="AI chat assistant with staff handover: bike workshop demo">
+<meta property="og:description" content="A demo AI chat assistant for a bike workshop: answers prices and hours in three languages, hands repairs to staff with photos, and sends quotes the customer can accept. Built with n8n and Claude.">
+<meta property="og:image" content="https://obradcesic.com/assets/video/srauf.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://obradcesic.com/demos/ai-chat-assistant/">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "VideoObject",
+ "name": "Bike workshop assistant: demo",
+ "description": "A demo AI chat assistant for a bike workshop: answers prices and hours in three languages, hands repairs to staff with photos, and sends quotes the customer can accept. Built with n8n and Claude.",
+ "thumbnailUrl": "https://obradcesic.com/assets/video/srauf.webp",
+ "contentUrl": "https://obradcesic.com/assets/video/srauf.mp4",
+ "uploadDate": "2026-11-03",
+ "duration": "PT1M40S",
+ "creator": {
+  "@type": "Person",
+  "name": "Obrad Ćešić",
+  "url": "https://obradcesic.com/"
+ }
+}
+</script>
+<link rel="icon" href="../../favicon-32.png" sizes="32x32">
+<link rel="icon" href="../../icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Castoro:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css?v=refined-10">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="top wrap">
+  <a class="brand" href="../../" aria-label="Obrad Ćešić, home">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke-linecap="round"><path class="r" stroke-width="1.4" transform="translate(1.3 .9)" d="M16 3.6C24.2 3.6 26.9 8.9 26.1 14.9 25.2 21.8 20.8 28.4 16 28.4 11.2 28.4 6.8 21.8 5.9 14.9 5.1 8.9 7.8 3.6 16 3.6Z"/><g class="w"><path stroke-width="1.6" d="M16 3.6C24.2 3.6 26.9 8.9 26.1 14.9 25.2 21.8 20.8 28.4 16 28.4 11.2 28.4 6.8 21.8 5.9 14.9 5.1 8.9 7.8 3.6 16 3.6Z"/><path stroke-width="1" d="M6.2 10.6C10.5 13.6 21.5 13.6 25.8 10.6M6.6 18.9C10.6 21.8 21.4 21.8 25.4 18.9M16 3.6C11.6 9 11.6 22.4 16 28.4"/></g></g></svg>
+    Obrad Ćešić
+  </a>
+  <nav aria-label="Main"><a href="../../#work">Work</a><a href="../../#apps">Apps</a><a href="../../#approach">Approach</a><a class="nav-cta" href="../../#contact">Contact</a></nav>
+</header>
+
+<main id="main" class="wrap">
+  <p class="crumb"><a href="../../#work">← All demos</a></p>
+  <div class="dp-head">
+    <p class="eyebrow">Demo</p>
+    <h1>Bike workshop assistant</h1>
+    <p class="lead">Answers prices and hours in three languages, hands repairs to staff with the photos, and sends quotes the customer can accept.</p>
+  </div>
+  <figure class="dp-video">
+    <video controls preload="none" playsinline poster="../../assets/video/srauf.webp" aria-label="Demo video: bike workshop assistant, 1 minute 40 seconds">
+      <source src="../../assets/video/srauf.mp4" type="video/mp4">
+      <a href="../../assets/video/srauf.mp4">Download the video</a>
+    </video>
+  </figure>
+
+  <div class="dp-body">
+    <div>
+      <section>
+        <h2>What it does</h2>
+        <ul><li>Answers price and opening-hours questions in English, Slovenian or Croatian/Serbian, only from facts the owner approved, and shows where the answer came from.</li><li>Hands anything custom to a person, with the whole conversation and up to three photos.</li><li>Staff write a quote, check the exact total and approve it. The customer can accept it or ask a question, and an expired or revised quote can&#x27;t be accepted.</li><li>Every request has an owner, a next action and a due time. Overdue work raises an alert.</li><li>Questions it couldn&#x27;t answer are collected for the owner, who writes the answer once and publishes it.</li><li>Three days after a reply with no answer, n8n drafts a follow-up for approval. A customer reply cancels it.</li></ul>
+      </section>
+      <section>
+        <h2>When things go wrong</h2>
+        <ul><li>A repeated form submission creates one enquiry, not two.</li><li>Two staff approving at the same moment send one message.</li><li>If sending fails, the approved message is kept and retried.</li><li>Conflicting prices go to a person instead of being guessed.</li></ul>
+      </section>
+    </div>
+    <aside class="dp-side" aria-label="Summary">
+      <dl>
+        <dt>Tested</dt><dd><p class="result">77 automated checks</p><p class="result">45 checkpoints through a running n8n</p></dd>
+        <dt>Built with</dt><dd>Python · n8n · Claude</dd>
+        <dt>Useful for</dt><dd>Shops, workshops and service businesses that answer the same questions all day and quote custom jobs.</dd>
+        <dt>Code</dt><dd><a class="code" href="https://github.com/cesicobrad/srauf-workshop">See the code on GitHub ↗</a></dd>
+      </dl>
+      <p class="crumb">Šrauf, its staff and customers are fictional.</p>
+    </aside>
+  </div>
+
+  <div class="dp-cta">
+    <div>
+      <h2>Want one for your business?</h2>
+      <p>Tell me how you work now. I reply within a day and give a fixed quote.</p>
+    </div>
+    <div class="actions">
+      <a class="btn" href="https://calendly.com/cesicobrad/30min" target="_blank" rel="noopener">Book a call</a>
+      <a class="link" href="mailto:cesicobrad@gmail.com?subject=Bike workshop assistant">Email me</a>
+    </div>
+  </div>
+  <nav class="dp-more" aria-label="Other demos"><span>Other demos:</span><a href="../ai-voice-receptionist/">Voice receptionist</a><a href="../invoice-data-extraction/">Document extraction</a><a href="../n8n-lead-automation/">Lead automation in n8n</a></nav>
+</main>
+
+<footer class="wrap"><span>© 2026 Obrad Ćešić</span><a href="../../">Home</a></footer>
+</body>
+</html>
