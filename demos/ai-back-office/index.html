@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI back office: try to break it</title>
+<meta name="description" content="A finance back office run by rules, an AI agent and a named person. Press a button to break it and watch a recording of what really happened. Demo with made-up data, built with Claude Code.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Castoro&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="canonical" href="https://obradcesic.com/demos/ai-back-office/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://obradcesic.com/demos/ai-back-office/">
+<meta property="og:title" content="AI back office: try to break it">
+<meta property="og:description" content="A finance back office run by rules, an AI agent and a named person. Press a button to break it and watch a recording of what really happened.">
+<meta property="og:image" content="https://obradcesic.com/assets/video/back-office.webp">
+<script data-goatcounter="https://obradcesic.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<a class="skip" href="#break">Skip to the demo</a>
+<header class="top wrap">
+  <a class="brand" href="https://obradcesic.com">Obrad Ćešić</a>
+  <nav aria-label="Sections">
+    <a href="#break">Break it</a>
+    <a href="#watch">Watch it work</a>
+    <a href="#score">Scorecard</a>
+    <a href="#records">Records</a>
+    <a href="#results">Results</a>
+    <a href="#attacked">Attacks</a>
+    <a href="#built">How it's built</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero wrap">
+  <h1>A finance back office you can try to break.</h1>
+  <div class="hero-text">
+    <p class="lead">Payment documents arrive by email. This system reads them, matches them to open invoices and posts only exact matches to the accounting system. An AI agent investigates everything else and proposes what to do. A named person has to approve it.</p>
+    <p class="label">Demo with made-up data. Built with Claude Code. <a href="video/back-office-60s.mp4">Watch the 60-second video</a></p>
+  </div>
+</section>
+
+<section id="break" class="wrap" aria-labelledby="break-title">
+  <h2 id="break-title" class="sr">Try to break it</h2>
+  <div class="console">
+    <div class="picks" id="picks" role="group" aria-label="Choose how to break it"></div>
+    <div class="stage">
+      <div class="stage-head">
+        <div>
+          <h3 id="scene-title"></h3>
+          <p class="provenance" id="scene-source"></p>
+        </div>
+        <div class="stage-controls">
+          <button class="quiet" id="scene-skip" type="button">Skip to the end</button>
+          <button class="quiet" id="scene-again" type="button">Play again</button>
+        </div>
+      </div>
+      <div class="stage-body">
+        <div class="view" id="scene-view"></div>
+        <ol class="log" id="scene-log" aria-live="polite"></ol>
+      </div>
+      <dl class="tally" id="scene-tally"></dl>
+    </div>
+  </div>
+  <p class="under">Every button replays a recording of the real code running, so nothing can go wrong during your visit. The kills are real process kills and the failures are injected into a fake accounting system.</p>
+</section>
+
+<section id="watch" class="section wrap" aria-labelledby="watch-title">
+  <div class="head">
+    <h2 id="watch-title">Watch it work</h2>
+    <p id="watch-intro"></p>
+  </div>
+  <div class="walk">
+    <ol class="walk-list" id="walk-list"></ol>
+    <div class="walk-detail">
+      <div id="walk-card" class="walk-card" tabindex="-1"></div>
+      <div class="walk-nav">
+        <button class="quiet" id="walk-prev" type="button">Back</button>
+        <span id="walk-count"></span>
+        <button class="solid" id="walk-next" type="button">Next step</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="score" class="section wrap" aria-labelledby="score-title">
+  <div class="head">
+    <h2 id="score-title">Scorecard</h2>
+    <p>The demo run, start to finish, with live Claude. The errors come from a separate check that reads the accounting system's own records. For a payment a person approved, the amount it expects comes from the approval record.</p>
+  </div>
+  <div class="receipt-wrap">
+    <dl class="receipt" id="receipt"></dl>
+    <div class="receipt-notes" id="receipt-notes"></div>
+  </div>
+</section>
+
+<section id="records" class="section wrap" aria-labelledby="records-title">
+  <div class="head">
+    <h2 id="records-title">Under the hood</h2>
+    <p>Every document and problem from the demo run. Open one to see each step, prompt, tool call and estimated cost, in the order it happened.</p>
+  </div>
+  <div class="filters" id="record-filters" role="group" aria-label="Filter records"></div>
+  <div class="records" id="record-list"><p class="muted">Loading records...</p></div>
+</section>
+
+<section id="results" class="section wrap" aria-labelledby="results-title">
+  <div class="head">
+    <h2 id="results-title">Results</h2>
+    <p>Scores after each round of work, including the ones that aren't perfect. Below them, what failed along the way and how it was fixed.</p>
+  </div>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Scores over time"><table class="scores" id="scores"></table></div>
+  <p class="under" id="scores-note"></p>
+
+  <div class="two">
+    <div>
+      <h3>What failed, and how it was fixed</h3>
+      <ul class="fails" id="fails"></ul>
+    </div>
+    <div class="side">
+      <h3>Reports</h3>
+      <p>Generated from the same numbers as this page.</p>
+      <p class="downloads"><a href="report/back-office-summary.pptx">Editable PowerPoint</a><a href="report/back-office-summary.pdf">PDF</a></p>
+      <h3>Ask it what failed</h3>
+      <p>An MCP server lets Claude answer that question from the records, with read-only tools. This is a real answer from a blank Claude with no other tools. It flagged problems that were then fixed.</p>
+      <details class="answer"><summary>Read the full answer</summary><pre id="mcp-answer"></pre></details>
+    </div>
+  </div>
+</section>
+
+<section id="attacked" class="section wrap" aria-labelledby="attacked-title">
+  <div class="head">
+    <h2 id="attacked-title">How it was attacked</h2>
+    <p>Separate Claude agents that hadn't built this were told to break it, and each break had to be shown with a script that runs. They found serious problems after every test above had passed.</p>
+  </div>
+  <div class="rounds" id="attack-rounds"></div>
+</section>
+
+<section id="built" class="section wrap" aria-labelledby="built-title">
+  <div class="head">
+    <h2 id="built-title">How it's built</h2>
+    <p>The AI reads and proposes. Code decides what gets posted, and a person approves anything that doesn't match exactly.</p>
+  </div>
+  <div class="flow" id="flow">
+    <div class="lane">
+      <h3>Every document</h3>
+      <ol>
+        <li data-who="Code"><b>Intake</b>Allowlist, repeat checks, unsafe ZIPs rejected</li>
+        <li data-who="Code"><b>Strict rules</b>Read the known CSV, text and PDF layouts</li>
+        <li data-who="Claude"><b>Claude reads</b>Only what the rules can't, as strict JSON with a confidence</li>
+        <li data-who="Code"><b>Code decides</b>Posts only an exact match on the right customer and currency</li>
+        <li data-who="Code"><b>Outbox</b>Saved first and sent with a fixed key, so a crash can't post twice</li>
+      </ol>
+    </div>
+    <div class="lane">
+      <h3>Anything that doesn't match</h3>
+      <ol>
+        <li data-who="Code"><b>Review queue</b>Each problem becomes a case</li>
+        <li data-who="Claude"><b>Agent investigates</b>Case, document, invoice, policy search with citations</li>
+        <li data-who="Browser"><b>Old portal</b>A real browser logs in, since there's no API</li>
+        <li data-who="Code"><b>Code checks</b>Amounts, word-for-word citations, reply rules</li>
+        <li data-who="Person"><b>Named person</b>Approves, and code rechecks the facts at that moment</li>
+      </ol>
+    </div>
+  </div>
+  <p class="under">Python, FastAPI, SQLite, Playwright, the Claude API and an MCP server. The accounting system and the old portal are fake ones that run locally and can fail on demand.</p>
+
+  <div class="limits">
+    <h3>What these numbers don't show</h3>
+    <ul>
+      <li>A remittance is only a customer's claim. A real system also needs matching against the bank statement.</li>
+      <li>The test sets aren't independent. The same process wrote the documents, the labels, the attacks and the code.</li>
+      <li>The AI results are small: one run per test set, so they say little about how consistent Claude is across repeats.</li>
+      <li>A customer who knows the exact amount and simply writes "paid" still gets it posted. Only a bank statement can catch that.</li>
+      <li>The attackers are Claude too, working on the same made-up data. People with real documents would find other things.</li>
+      <li>The latest live runs went through Claude Code on a subscription, so their costs are estimates at API prices, and the agent's API code has only run against a fake.</li>
+      <li>The hours a system like this saves are assumed here, so they aren't on this page. Nothing has run on real paperwork.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="foot wrap">
+  <p>Demo with made-up data. The company, customers, invoices, documents and policies are invented.</p>
+  <p>Claude Code wrote this code and the tests. <a href="https://obradcesic.com">Obrad Ćešić</a> set the goal and direction.</p>
+</footer>
+
+<dialog id="trace" aria-labelledby="trace-title">
+  <div class="trace-head">
+    <h3 id="trace-title"></h3>
+    <button class="quiet" id="trace-close" type="button">Close</button>
+  </div>
+  <div id="trace-body"></div>
+</dialog>
+
+<script src="data/page-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
