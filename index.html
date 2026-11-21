@@ -83,12 +83,12 @@
         <span class="num" aria-hidden="true">01</span>
         <span class="name"><span class="title">AI operations inbox</span><span class="kind">n8n · Outlook · Gmail · Claude</span></span>
         <span class="line">Sorts a shared Outlook or Gmail inbox.</span>
-        <span class="fig"><b>100/100</b><small>test emails</small></span>
+        <span class="fig"><b>79/93</b><small>real business emails</small></span>
         <span class="plus" aria-hidden="true"></span>
       </summary>
       <div class="row-open">
         <a class="media" href="demos/ai-ops-inbox/" tabindex="-1" aria-hidden="true"><img src="assets/inbox-console.webp" alt="" loading="lazy"><span class="dur">Open the demo →</span></a>
-        <div class="row-body"><p>Each email is filed, deadlines and amounts are extracted, the CRM and task list are updated, and urgent mail is posted to Teams or Slack. Emails it is unsure about go to a person. Nothing is deleted or sent.</p><p class="outcome">100 of 100 test emails filed correctly. Real business mail: 79 of 93 correct, 11 sent to a person, 3 wrong. 0 of 550 real spam and phishing emails filed as work.</p><p class="row-links"><a href="demos/ai-ops-inbox/">Details</a><a href="https://github.com/cesicobrad/ai-ops-inbox" aria-label="Code for AI operations inbox on GitHub">Code ↗</a></p></div>
+        <div class="row-body"><p>Each email is filed, deadlines and amounts are extracted, the CRM and task list are updated, and urgent mail is posted to Teams or Slack. Emails it is unsure about go to a person. Nothing is deleted or sent.</p><p class="outcome">Real business mail: 79 of 93 filed correctly, 11 sent to a person, 3 wrong. 0 of 550 real spam and phishing emails filed as work. 100 of 100 synthetic test emails correct.</p><p class="row-links"><a href="demos/ai-ops-inbox/">Details</a><a href="https://github.com/cesicobrad/ai-ops-inbox" aria-label="Code for AI operations inbox on GitHub">Code ↗</a></p></div>
       </div>
     </details>
     <details class="row" id="demo-backoffice" data-preview="assets/video/back-office.webp">
@@ -122,12 +122,12 @@
         <span class="num" aria-hidden="true">04</span>
         <span class="name"><span class="title">Bike workshop assistant</span><span class="kind">Python · n8n · Claude</span></span>
         <span class="line">Chat assistant that answers customers and sends quotes.</span>
-        <span class="fig"><b>77</b><small>checks pass</small></span>
+        <span class="fig"><b>3</b><small>languages</small></span>
         <span class="plus" aria-hidden="true"></span>
       </summary>
       <div class="row-open">
         <button class="media" type="button" data-video="assets/video/srauf.mp4" aria-label="Play video: Bike workshop assistant, 1 minute 40 seconds"><img src="assets/video/srauf.webp" alt="" loading="lazy"><span class="dur" aria-hidden="true">▶ 1:40</span></button>
-        <div class="row-body"><p>Answers prices and opening hours in three languages, passes repairs to staff with the customer&#x27;s photos, and sends quotes the customer can accept.</p><p class="outcome">77 automated checks and 45 steps through n8n pass.</p><p class="row-links"><a href="demos/ai-chat-assistant/">Details</a><button type="button" data-video="assets/video/srauf.mp4" aria-label="Watch the video: Bike workshop assistant, 1 minute 40 seconds">Watch · 1:40</button><a href="https://github.com/cesicobrad/srauf-workshop" aria-label="Code for Bike workshop assistant on GitHub">Code ↗</a></p></div>
+        <div class="row-body"><p>Answers prices and opening hours in English, Slovenian or Croatian/Serbian, only from facts the owner approved. Anything custom goes to staff with the whole conversation and the customer&#x27;s photos, and staff send a quote the customer can accept.</p><p class="outcome">Customers get an answer or a person, never a guess. Tested with 77 automated checks and 45 steps through n8n.</p><p class="row-links"><a href="demos/ai-chat-assistant/">Details</a><button type="button" data-video="assets/video/srauf.mp4" aria-label="Watch the video: Bike workshop assistant, 1 minute 40 seconds">Watch · 1:40</button><a href="https://github.com/cesicobrad/srauf-workshop" aria-label="Code for Bike workshop assistant on GitHub">Code ↗</a></p></div>
       </div>
     </details>
     <details class="row" id="demo-docs" data-preview="assets/video/doc-extraction.webp">
@@ -143,46 +143,8 @@
         <div class="row-body"><p>Reads invoices from email, PDF or photo. Totals are checked in code and a person approves each record.</p><p class="outcome">103 of 103 fields correct. About $0.001 per document.</p><p class="row-links"><a href="demos/invoice-data-extraction/">Details</a><button type="button" data-video="assets/video/doc-extraction.mp4" aria-label="Watch the video: Document extraction, 1 minute 9 seconds">Watch · 1:09</button><a href="https://github.com/cesicobrad/doc-extraction" aria-label="Code for Document extraction on GitHub">Code ↗</a></p></div>
       </div>
     </details>
-    <details class="row" id="demo-n8n" data-preview="assets/video/n8n-leads.webp">
-      <summary>
-        <span class="num" aria-hidden="true">06</span>
-        <span class="name"><span class="title">Lead automation in n8n</span><span class="kind">n8n · Claude</span></span>
-        <span class="line">Scores enquiries and drafts replies for approval.</span>
-        <span class="fig"><b>18/18</b><small>test leads</small></span>
-        <span class="plus" aria-hidden="true"></span>
-      </summary>
-      <div class="row-open">
-        <button class="media" type="button" data-video="assets/video/n8n-leads.mp4" aria-label="Play video: Lead automation in n8n, 1 minute 27 seconds"><img src="assets/video/n8n-leads.webp" alt="" loading="lazy"><span class="dur" aria-hidden="true">▶ 1:27</span></button>
-        <div class="row-body"><p>Reads each enquiry and the sender&#x27;s website, scores the lead and drafts a reply. Nothing is sent until a person approves it.</p><p class="outcome">18 of 18 test leads scored as labelled. About $0.001 per lead.</p><p class="row-links"><a href="demos/n8n-lead-automation/">Details</a><button type="button" data-video="assets/video/n8n-leads.mp4" aria-label="Watch the video: Lead automation in n8n, 1 minute 27 seconds">Watch · 1:27</button><a href="https://github.com/cesicobrad/n8n-automations" aria-label="Code for Lead automation in n8n on GitHub">Code ↗</a></p></div>
-      </div>
-    </details>
-    <details class="row no-media" id="kvant">
-      <summary>
-        <span class="num" aria-hidden="true">07</span>
-        <span class="name"><span class="title">Kvant document assistant</span><span class="kind">Qdrant · Ollama · hybrid search</span></span>
-        <span class="line">Answers questions about a company&#x27;s documents.</span>
-        <span class="fig"><b>15/15</b><small>test questions</small></span>
-        <span class="plus" aria-hidden="true"></span>
-      </summary>
-      <div class="row-open">
-        
-        <div class="row-body"><p>Answers in Slovenian or English with links to the sources. Runs on the company&#x27;s own computer, so documents never leave it.</p><p class="outcome">15 of 15 test questions and 11 of 11 new ones answered correctly.</p><p class="row-links"><a href="https://github.com/cesicobrad/kvant-assistant" aria-label="Code for Kvant document assistant on GitHub">Code ↗</a></p></div>
-      </div>
-    </details>
-    <details class="row no-media" id="microsoft">
-      <summary>
-        <span class="num" aria-hidden="true">08</span>
-        <span class="name"><span class="title">Microsoft 365 and Power Platform</span><span class="kind">Power Apps · Power Automate · SharePoint · Azure OpenAI</span></span>
-        <span class="line">Apps and flows for teams on Microsoft 365.</span>
-        <span class="fig"><small>Client work</small></span>
-        <span class="plus" aria-hidden="true"></span>
-      </summary>
-      <div class="row-open">
-        
-        <div class="row-body"><p>Power Apps that replace spreadsheets and paper forms, Power Automate flows for email intake and approvals, and Azure OpenAI connected to Outlook, Teams and OneDrive.</p></div>
-      </div>
-    </details>
   </div>
+  <p class="more-work">More: <a id="demo-n8n" href="demos/n8n-lead-automation/">Lead automation in n8n</a>, scores enquiries and drafts replies · <a id="kvant" href="https://github.com/cesicobrad/kvant-assistant">Kvant document assistant</a>, answers from company documents, offline</p>
 </section>
 
 <section class="section wrap" id="apps">
@@ -236,7 +198,7 @@
   <dl>
     <dt>Time zone</dt><dd>CET, remote</dd>
     <dt>Languages</dt><dd>English, Serbian/Croatian, some Slovenian</dd>
-    <dt>Tools</dt><dd>Python, Flutter, Power Platform, Claude and OpenAI, n8n</dd>
+    <dt id="microsoft">Tools</dt><dd>Python, n8n, Power Apps and Power Automate, Claude and OpenAI, Flutter</dd>
     <dt>Elsewhere</dt><dd><a href="https://github.com/cesicobrad">GitHub</a> · <a href="https://www.linkedin.com/in/obrad-%C4%87e%C5%A1i%C4%87-98bb412b5/">LinkedIn</a></dd>
   </dl>
 </section>

@@ -89,6 +89,9 @@ h3{font:400 23px/1.25 var(--display);color:var(--ink);letter-spacing:-.005em}
 .row-links{display:flex;flex-wrap:wrap;gap:6px 24px;margin-top:14px;font-size:14.5px!important;font-weight:500}
 .row-links a,.row-links button{color:var(--blue);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;font-weight:500}
 .row-links a:hover,.row-links button:hover{text-decoration:underline;text-underline-offset:3px}
+.more-work{margin-top:22px;font-size:15px;color:var(--soft)}
+.more-work a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;text-decoration-color:var(--line)}
+.more-work a:hover{text-decoration-color:var(--ink)}
 /* Hover preview that follows the cursor over closed rows (desktop only, set up in app.js) */
 .peek{position:fixed;left:0;top:0;width:300px;aspect-ratio:16/10;border-radius:6px;overflow:hidden;box-shadow:0 24px 48px -20px #17161a55;outline:1px solid var(--line);background:#efece6;pointer-events:none;opacity:0;transform:translate(-50%,-50%) scale(.96);transition:opacity .18s ease,transform .18s ease;z-index:5}
 .peek.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
