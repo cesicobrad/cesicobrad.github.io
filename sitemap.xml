@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://obradcesic.com/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-22</lastmod>
   </url>
   <url>
     <loc>https://obradcesic.com/demos/ai-chat-assistant/</loc>
@@ -23,5 +23,9 @@
   <url>
     <loc>https://obradcesic.com/demos/ai-back-office/</loc>
     <lastmod>2026-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://obradcesic.com/demos/ai-ops-inbox/</loc>
+    <lastmod>2026-11-22</lastmod>
   </url>
 </urlset>

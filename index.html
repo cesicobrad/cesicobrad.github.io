@@ -41,7 +41,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Castoro:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=refined-10">
+<link rel="stylesheet" href="styles.css?v=refined-11">
 <script data-goatcounter="https://obradcesic.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
@@ -74,55 +74,82 @@
 
 <section class="section wrap" id="work">
   <div class="head">
-    <h2>Demos</h2>
-    <p>Five demos you can watch, run and read the code of.</p>
+    <h2>Work</h2>
+    <p>Demos you can watch and try, with the code. Apps people use. Client work.</p>
   </div>
+  <div class="filters" role="group" aria-label="Show work by type" hidden>
+    <button type="button" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" data-filter="automation" aria-pressed="false">Automations</button>
+    <button type="button" data-filter="assistant" aria-pressed="false">AI assistants</button>
+    <button type="button" data-filter="documents" aria-pressed="false">Documents</button>
+    <button type="button" data-filter="apps" aria-pressed="false">Apps</button>
+  </div>
+
+  <div class="group" id="demos">
   <div class="demos">
-    <article class="demo" id="demo-backoffice">
+    <article class="demo feature" id="demo-inbox" data-tags="automation">
+      <a class="thumb" href="demos/ai-ops-inbox/" tabindex="-1" aria-hidden="true"><img src="assets/inbox-console.webp" alt="" loading="lazy"><span class="dur">Open the demo →</span></a>
+      <p class="kind">Automation · n8n, Outlook, Gmail, Claude</p>
+      <h3><a href="demos/ai-ops-inbox/">AI operations inbox</a></h3>
+      <p>Sorts a shared Outlook or Gmail inbox in German, Serbian and English. Files each email, pulls out deadlines and amounts, updates the CRM, creates tasks and alerts Teams or Slack. When the AI is unsure, a second model reads it, and anything still in doubt goes to a person. Nothing is deleted or sent.</p>
+      <p class="result">100 of 100 test emails filed right; 0 of 550 real spam and phishing emails filed as work</p>
+    </article>
+    <article class="demo feature" id="demo-backoffice" data-tags="automation documents">
       <button class="thumb" data-video="assets/video/back-office.mp4" aria-label="Play video: AI finance back office, 1 minute"><img src="assets/video/back-office.webp" alt="" loading="lazy"><span class="dur" aria-hidden="true">▶ 1:00</span></button>
+      <p class="kind">Automation · Documents</p>
       <h3><a href="demos/ai-back-office/">AI finance back office: try to break it</a></h3>
       <p>Reads payment documents from email, posts only exact matches, and has an AI agent investigate the rest for a person to approve. Press the buttons and try to break it.</p>
       <p class="result">0 of 93 attacks by independent AI agents got through; 18 of 18 agent cases right</p>
       <a class="code" href="https://github.com/cesicobrad/ai-back-office" aria-label="Code for the AI finance back office on GitHub">Code ↗</a>
     </article>
-    <article class="demo" id="demo-srauf">
+    <h3 class="group-title">More demos</h3>
+    <article class="demo" id="demo-srauf" data-tags="assistant">
       <button class="thumb" data-video="assets/video/srauf.mp4" aria-label="Play video: bike workshop assistant, 1 minute 40 seconds"><img src="assets/video/srauf.webp" alt="" loading="lazy"><span class="dur" aria-hidden="true">▶ 1:40</span></button>
+      <div class="demo-text">
+      <p class="kind">AI assistant</p>
       <h3><a href="demos/ai-chat-assistant/">Bike workshop assistant</a></h3>
       <p>Answers prices and hours in three languages, hands repairs to staff with the photos, and sends quotes the customer can accept.</p>
       <p class="result">77 automated checks, 45 steps through n8n</p>
       <a class="code" href="https://github.com/cesicobrad/srauf-workshop" aria-label="Code for the bike workshop assistant on GitHub">Code ↗</a>
+      </div>
     </article>
-    <article class="demo" id="demo-nora">
+    <article class="demo" id="demo-nora" data-tags="assistant">
       <button class="thumb" data-video="assets/video/nora.mp4" aria-label="Play video with sound: voice receptionist, 2 minutes 6 seconds"><img src="assets/video/nora.webp" alt="" loading="lazy"><span class="dur" aria-hidden="true">▶ 2:06 · sound</span></button>
+      <div class="demo-text">
+      <p class="kind">AI assistant · Voice</p>
       <h3><a href="demos/ai-voice-receptionist/">Voice receptionist</a></h3>
       <p>Nora answers spoken questions for a dental practice in English or Slovenian and books appointments, only after the caller says yes.</p>
       <p class="result">14 of 14 test calls, about 2 s per reply</p>
       <a class="code" href="https://github.com/cesicobrad/voice-receptionist" aria-label="Code for the voice receptionist on GitHub">Code ↗</a>
+      </div>
     </article>
-    <article class="demo" id="demo-docs">
+    <article class="demo" id="demo-docs" data-tags="documents">
       <button class="thumb" data-video="assets/video/doc-extraction.mp4" aria-label="Play video: document extraction, 1 minute 9 seconds"><img src="assets/video/doc-extraction.webp" alt="" loading="lazy"><span class="dur" aria-hidden="true">▶ 1:09</span></button>
+      <div class="demo-text">
+      <p class="kind">Documents</p>
       <h3><a href="demos/invoice-data-extraction/">Document extraction</a></h3>
       <p>Emails, PDFs and photos of invoices turned into structured data. Totals are checked in code and a person approves each record.</p>
       <p class="result">103 of 103 fields, about $0.001 per document</p>
       <a class="code" href="https://github.com/cesicobrad/doc-extraction" aria-label="Code for the document extraction on GitHub">Code ↗</a>
+      </div>
     </article>
-    <article class="demo" id="demo-n8n">
+    <article class="demo" id="demo-n8n" data-tags="automation">
       <button class="thumb" data-video="assets/video/n8n-leads.mp4" aria-label="Play video: lead automation in n8n, 1 minute 27 seconds"><img src="assets/video/n8n-leads.webp" alt="" loading="lazy"><span class="dur" aria-hidden="true">▶ 1:27</span></button>
+      <div class="demo-text">
+      <p class="kind">Automation · n8n</p>
       <h3><a href="demos/n8n-lead-automation/">Lead automation in n8n</a></h3>
       <p>Reads each enquiry and the sender's website, scores the lead hot, warm or cold with the reasons, and drafts a reply. Nothing is sent until a person approves it.</p>
       <p class="result">18 of 18 test leads scored as labelled, about $0.001 per lead</p>
       <a class="code" href="https://github.com/cesicobrad/n8n-automations" aria-label="Code for the n8n lead automation on GitHub">Code ↗</a>
+      </div>
     </article>
   </div>
-</section>
-
-<section class="section wrap" id="apps">
-  <div class="head">
-    <h2>Apps</h2>
-    <p>Products I designed and built.</p>
   </div>
+
+  <div class="group" id="apps">
+  <h3 class="group-title">Apps</h3>
   <div class="apps">
-    <article class="app" id="aron">
+    <article class="app" id="aron" data-tags="apps">
       <button class="shot" data-video="assets/video/aron.mp4" data-tall aria-label="Play video with sound: Aron, 52 seconds"><img src="assets/aron-store-grid.webp" alt="Aron's word board" loading="lazy"><span class="dur" aria-hidden="true">▶ 0:52 · sound</span></button>
       <div>
         <p class="status live">Live on the App Store and Google Play</p>
@@ -132,7 +159,7 @@
         <p class="stack">Flutter · Firebase · Gemini text-to-speech · ML Kit</p>
       </div>
     </article>
-    <article class="app" id="jacob">
+    <article class="app" id="jacob" data-tags="apps">
       <button class="shot" data-video="assets/video/jacob.mp4" data-tall aria-label="Play video with sound: Jacob, 1 minute 28 seconds"><img src="assets/jacob-map.webp" alt="Jacob's lesson path" loading="lazy"><span class="dur" aria-hidden="true">▶ 1:28 · sound</span></button>
       <div>
         <p class="status">In development, private Android alpha</p>
@@ -143,15 +170,14 @@
       </div>
     </article>
   </div>
-</section>
-
-<section class="section wrap" id="more">
-  <div class="head">
-    <h2>More work</h2>
   </div>
+
+  <div class="group" id="more">
+  <h3 class="group-title">Other work</h3>
   <div class="list">
-    <article id="microsoft"><h3>Microsoft 365 and Power Platform</h3><p>Power Apps that replace spreadsheets and paper, with forms, approvals and dashboards on SharePoint. Power Automate flows for email and document intake, approvals and notifications. Azure OpenAI working with your own data, connected to Outlook, Teams and OneDrive.</p><p class="stack">Power Apps · Power Automate · SharePoint · Azure OpenAI · Microsoft Graph</p></article>
-    <article id="kvant"><h3>Kvant document assistant</h3><p>Runs on the company's own computer and answers in Slovenian or English with links to sources. 15 of 15 test questions, plus 11 of 11 new ones.</p><p class="stack">Qdrant · Ollama · hybrid search · <a href="https://github.com/cesicobrad/kvant-assistant">code ↗</a></p></article>
+    <article id="microsoft" data-tags="automation apps"><p class="kind">Automation · Apps</p><h3>Microsoft 365 and Power Platform</h3><p>Power Apps that replace spreadsheets and paper, with forms, approvals and dashboards on SharePoint. Power Automate flows for email and document intake, approvals and notifications. Azure OpenAI working with your own data, connected to Outlook, Teams and OneDrive.</p><p class="stack">Power Apps · Power Automate · SharePoint · Azure OpenAI · Microsoft Graph</p></article>
+    <article id="kvant" data-tags="assistant documents"><p class="kind">AI assistant · Documents</p><h3>Kvant document assistant</h3><p>Runs on the company's own computer and answers in Slovenian or English with links to sources. 15 of 15 test questions, plus 11 of 11 new ones.</p><p class="stack">Qdrant · Ollama · hybrid search · <a href="https://github.com/cesicobrad/kvant-assistant">code ↗</a></p></article>
+  </div>
   </div>
 </section>
 
@@ -184,7 +210,7 @@
 </main>
 
 <footer class="wrap"><span>© 2026 Obrad Ćešić</span><a href="#">Back to top ↑</a></footer>
-<script src="app.js?v=studio-2" defer></script>
+<script src="app.js?v=work-1" defer></script>
 <script src="sculpture.js?v=2" defer></script>
 </body>
 </html>

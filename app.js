@@ -20,3 +20,26 @@
   @media(max-width:600px){.vplayer.tall video{height:auto;width:100%}}`;
   document.head.appendChild(s);
 })();
+
+// Work filters: show one kind of project at a time. Without JS everything is shown and the bar stays hidden.
+(() => {
+  const bar = document.querySelector('.filters');
+  if (!bar) return;
+  const items = [...document.querySelectorAll('#work [data-tags]')];
+  const groups = [...document.querySelectorAll('#work .group')];
+  const grid = document.querySelector('#work .demos');
+  const has = (el, f) => el.dataset.tags.split(' ').includes(f);
+  const buttons = [...bar.querySelectorAll('button')];
+  buttons.forEach((b) => {
+    const f = b.dataset.filter;
+    const n = f === 'all' ? items.length : items.filter((i) => has(i, f)).length;
+    b.insertAdjacentHTML('beforeend', `<span class="n">${n}</span>`);
+    b.addEventListener('click', () => {
+      buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      items.forEach((i) => { i.hidden = f !== 'all' && !has(i, f); });
+      groups.forEach((g) => { g.hidden = !g.querySelector('[data-tags]:not([hidden])'); });
+      grid.classList.toggle('filtered', f !== 'all');
+    });
+  });
+  bar.hidden = false;
+})();
