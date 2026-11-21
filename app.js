@@ -21,20 +21,28 @@
   document.head.appendChild(s);
 })();
 
-// Work list: show the first rows, the rest behind "Show more". Without JS every row is shown.
+// Work list: a small preview follows the cursor over closed rows (mouse only, not with reduced motion).
 (() => {
-  const rows = document.getElementById('rows');
-  const btn = document.getElementById('more-btn');
-  if (!rows || !btn) return;
-  const extra = rows.querySelectorAll('.extra').length;
-  if (!extra) return;
-  // A link straight to a hidden row (for example #kvant) opens with the full list.
-  if (rows.querySelector('.extra:target')) return;
-  rows.classList.add('collapsed');
-  btn.hidden = false;
-  btn.addEventListener('click', () => {
-    const open = rows.classList.toggle('collapsed') === false;
-    btn.setAttribute('aria-expanded', String(open));
-    btn.textContent = open ? 'Show fewer' : `Show ${extra} more`;
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const peek = document.createElement('div');
+  peek.className = 'peek';
+  peek.setAttribute('aria-hidden', 'true');
+  peek.innerHTML = '<img alt="">';
+  document.body.appendChild(peek);
+  const img = peek.querySelector('img');
+  document.querySelectorAll('.row[data-preview]').forEach((row) => {
+    const sum = row.querySelector('summary');
+    sum.addEventListener('mouseenter', () => {
+      if (row.open) return;
+      img.src = row.dataset.preview;
+      peek.classList.add('on');
+    });
+    sum.addEventListener('mousemove', (e) => {
+      peek.style.left = `${Math.min(e.clientX + 190, innerWidth - 170)}px`;
+      peek.style.top = `${e.clientY}px`;
+      if (row.open) peek.classList.remove('on');
+    });
+    sum.addEventListener('mouseleave', () => peek.classList.remove('on'));
+    sum.addEventListener('click', () => peek.classList.remove('on'));
   });
 })();

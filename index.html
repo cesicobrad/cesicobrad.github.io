@@ -41,7 +41,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Castoro:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=rows-1">
+<link rel="stylesheet" href="styles.css?v=index-1">
 <script data-goatcounter="https://obradcesic.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
@@ -75,97 +75,114 @@
 <section class="section wrap" id="work">
   <div class="head">
     <h2>Work</h2>
-    <p>Demos with public code and measured results.</p>
+    <p>Demos with public code and measured results. Open a row to see it.</p>
   </div>
-  <ol class="rows" id="rows">
-    <li class="row" id="demo-inbox">
-      <div class="row-name">
-        <h3><a href="demos/ai-ops-inbox/">AI operations inbox</a></h3>
-        <p class="kind">n8n · Outlook · Gmail · Claude</p>
+  <div class="rows" id="rows">
+    <details class="row" id="demo-inbox" data-preview="assets/inbox-console.webp" open>
+      <summary>
+        <span class="num" aria-hidden="true">01</span>
+        <span class="name"><span class="title">AI operations inbox</span><span class="kind">n8n · Outlook · Gmail · Claude</span></span>
+        <span class="line">Sorts a shared Outlook or Gmail inbox.</span>
+        <span class="fig"><b>100/100</b><small>test emails</small></span>
+        <span class="plus" aria-hidden="true"></span>
+      </summary>
+      <div class="row-open">
+        <a class="media" href="demos/ai-ops-inbox/" tabindex="-1" aria-hidden="true"><img src="assets/inbox-console.webp" alt="" loading="lazy"><span class="dur">Open the demo →</span></a>
+        <div class="row-body"><p>Each email is filed, deadlines and amounts are extracted, the CRM and task list are updated, and urgent mail is posted to Teams or Slack. Emails it is unsure about go to a person. Nothing is deleted or sent.</p><p class="outcome">100 of 100 test emails filed correctly. Real business mail: 79 of 93 correct, 11 sent to a person, 3 wrong. 0 of 550 real spam and phishing emails filed as work.</p><p class="row-links"><a href="demos/ai-ops-inbox/">Details</a><a href="https://github.com/cesicobrad/ai-ops-inbox" aria-label="Code for AI operations inbox on GitHub">Code ↗</a></p></div>
       </div>
-      <div class="row-body">
-        <p>Sorts a shared Outlook or Gmail inbox. Each email is filed, deadlines and amounts are extracted, the CRM and task list are updated, and urgent mail is posted to Teams or Slack. Emails it is unsure about go to a person.</p>
-        <p class="outcome">100 of 100 test emails filed correctly. Real business mail: 79 of 93 correct, 11 sent to a person, 3 wrong.</p>
-        <p class="row-links"><a href="demos/ai-ops-inbox/">Details</a><a href="https://github.com/cesicobrad/ai-ops-inbox" aria-label="Code for the AI operations inbox on GitHub">Code ↗</a></p>
+    </details>
+    <details class="row" id="demo-backoffice" data-preview="assets/video/back-office.webp">
+      <summary>
+        <span class="num" aria-hidden="true">02</span>
+        <span class="name"><span class="title">AI finance back office</span><span class="kind">Python · FastAPI · Playwright · Claude</span></span>
+        <span class="line">Matches payments and posts them to accounting.</span>
+        <span class="fig"><b>0/93</b><small>attacks got through</small></span>
+        <span class="plus" aria-hidden="true"></span>
+      </summary>
+      <div class="row-open">
+        <button class="media" type="button" data-video="assets/video/back-office.mp4" aria-label="Play video: AI finance back office, 1 minute"><img src="assets/video/back-office.webp" alt="" loading="lazy"><span class="dur" aria-hidden="true">▶ 1:00</span></button>
+        <div class="row-body"><p>Reads payment documents from email and posts exact matches to accounting. An AI agent looks into the rest and a person approves what it proposes. The demo page lets you try to break it.</p><p class="outcome">0 of 93 attacks by independent AI agents got through. 18 of 18 agent cases correct.</p><p class="row-links"><a href="demos/ai-back-office/">Details</a><button type="button" data-video="assets/video/back-office.mp4" aria-label="Watch the video: AI finance back office, 1 minute">Watch · 1:00</button><a href="https://github.com/cesicobrad/ai-back-office" aria-label="Code for AI finance back office on GitHub">Code ↗</a></p></div>
       </div>
-    </li>
-    <li class="row" id="demo-backoffice">
-      <div class="row-name">
-        <h3><a href="demos/ai-back-office/">AI finance back office</a></h3>
-        <p class="kind">Python · FastAPI · Playwright · Claude</p>
+    </details>
+    <details class="row" id="demo-nora" data-preview="assets/video/nora.webp">
+      <summary>
+        <span class="num" aria-hidden="true">03</span>
+        <span class="name"><span class="title">Voice receptionist</span><span class="kind">Python · Whisper · Claude · text to speech</span></span>
+        <span class="line">Answers spoken questions and books appointments.</span>
+        <span class="fig"><b>14/14</b><small>test calls</small></span>
+        <span class="plus" aria-hidden="true"></span>
+      </summary>
+      <div class="row-open">
+        <button class="media" type="button" data-video="assets/video/nora.mp4" aria-label="Play video: Voice receptionist, 2 minutes 6 seconds, with sound"><img src="assets/video/nora.webp" alt="" loading="lazy"><span class="dur" aria-hidden="true">▶ 2:06, sound</span></button>
+        <div class="row-body"><p>Answers spoken questions for a dental practice in English or Slovenian and books appointments. It books only after the caller confirms the time.</p><p class="outcome">14 of 14 test calls handled correctly. About 2 seconds per reply.</p><p class="row-links"><a href="demos/ai-voice-receptionist/">Details</a><button type="button" data-video="assets/video/nora.mp4" aria-label="Watch the video: Voice receptionist, 2 minutes 6 seconds, with sound">Watch · 2:06, sound</button><a href="https://github.com/cesicobrad/voice-receptionist" aria-label="Code for Voice receptionist on GitHub">Code ↗</a></p></div>
       </div>
-      <div class="row-body">
-        <p>Reads payment documents from email and posts exact matches to accounting. An AI agent looks into the rest and a person approves what it proposes. The demo page lets you try to break it.</p>
-        <p class="outcome">0 of 93 attacks by independent AI agents got through. 18 of 18 agent cases correct.</p>
-        <p class="row-links"><a href="demos/ai-back-office/">Details</a><button type="button" data-video="assets/video/back-office.mp4" aria-label="Watch the video: AI finance back office, 1 minute">Watch · 1:00</button><a href="https://github.com/cesicobrad/ai-back-office" aria-label="Code for the AI finance back office on GitHub">Code ↗</a></p>
+    </details>
+    <details class="row" id="demo-srauf" data-preview="assets/video/srauf.webp">
+      <summary>
+        <span class="num" aria-hidden="true">04</span>
+        <span class="name"><span class="title">Bike workshop assistant</span><span class="kind">Python · n8n · Claude</span></span>
+        <span class="line">Chat assistant that answers customers and sends quotes.</span>
+        <span class="fig"><b>77</b><small>checks pass</small></span>
+        <span class="plus" aria-hidden="true"></span>
+      </summary>
+      <div class="row-open">
+        <button class="media" type="button" data-video="assets/video/srauf.mp4" aria-label="Play video: Bike workshop assistant, 1 minute 40 seconds"><img src="assets/video/srauf.webp" alt="" loading="lazy"><span class="dur" aria-hidden="true">▶ 1:40</span></button>
+        <div class="row-body"><p>Answers prices and opening hours in three languages, passes repairs to staff with the customer&#x27;s photos, and sends quotes the customer can accept.</p><p class="outcome">77 automated checks and 45 steps through n8n pass.</p><p class="row-links"><a href="demos/ai-chat-assistant/">Details</a><button type="button" data-video="assets/video/srauf.mp4" aria-label="Watch the video: Bike workshop assistant, 1 minute 40 seconds">Watch · 1:40</button><a href="https://github.com/cesicobrad/srauf-workshop" aria-label="Code for Bike workshop assistant on GitHub">Code ↗</a></p></div>
       </div>
-    </li>
-    <li class="row" id="demo-nora">
-      <div class="row-name">
-        <h3><a href="demos/ai-voice-receptionist/">Voice receptionist</a></h3>
-        <p class="kind">Python · Whisper · Claude · text to speech</p>
+    </details>
+    <details class="row" id="demo-docs" data-preview="assets/video/doc-extraction.webp">
+      <summary>
+        <span class="num" aria-hidden="true">05</span>
+        <span class="name"><span class="title">Document extraction</span><span class="kind">Python · Claude · Streamlit</span></span>
+        <span class="line">Turns invoices into structured data.</span>
+        <span class="fig"><b>103/103</b><small>fields correct</small></span>
+        <span class="plus" aria-hidden="true"></span>
+      </summary>
+      <div class="row-open">
+        <button class="media" type="button" data-video="assets/video/doc-extraction.mp4" aria-label="Play video: Document extraction, 1 minute 9 seconds"><img src="assets/video/doc-extraction.webp" alt="" loading="lazy"><span class="dur" aria-hidden="true">▶ 1:09</span></button>
+        <div class="row-body"><p>Reads invoices from email, PDF or photo. Totals are checked in code and a person approves each record.</p><p class="outcome">103 of 103 fields correct. About $0.001 per document.</p><p class="row-links"><a href="demos/invoice-data-extraction/">Details</a><button type="button" data-video="assets/video/doc-extraction.mp4" aria-label="Watch the video: Document extraction, 1 minute 9 seconds">Watch · 1:09</button><a href="https://github.com/cesicobrad/doc-extraction" aria-label="Code for Document extraction on GitHub">Code ↗</a></p></div>
       </div>
-      <div class="row-body">
-        <p>Answers spoken questions for a dental practice in English or Slovenian and books appointments. It books only after the caller confirms the time.</p>
-        <p class="outcome">14 of 14 test calls handled correctly. About 2 seconds per reply.</p>
-        <p class="row-links"><a href="demos/ai-voice-receptionist/">Details</a><button type="button" data-video="assets/video/nora.mp4" aria-label="Watch the video with sound: voice receptionist, 2 minutes 6 seconds">Watch · 2:06, sound</button><a href="https://github.com/cesicobrad/voice-receptionist" aria-label="Code for the voice receptionist on GitHub">Code ↗</a></p>
+    </details>
+    <details class="row" id="demo-n8n" data-preview="assets/video/n8n-leads.webp">
+      <summary>
+        <span class="num" aria-hidden="true">06</span>
+        <span class="name"><span class="title">Lead automation in n8n</span><span class="kind">n8n · Claude</span></span>
+        <span class="line">Scores enquiries and drafts replies for approval.</span>
+        <span class="fig"><b>18/18</b><small>test leads</small></span>
+        <span class="plus" aria-hidden="true"></span>
+      </summary>
+      <div class="row-open">
+        <button class="media" type="button" data-video="assets/video/n8n-leads.mp4" aria-label="Play video: Lead automation in n8n, 1 minute 27 seconds"><img src="assets/video/n8n-leads.webp" alt="" loading="lazy"><span class="dur" aria-hidden="true">▶ 1:27</span></button>
+        <div class="row-body"><p>Reads each enquiry and the sender&#x27;s website, scores the lead and drafts a reply. Nothing is sent until a person approves it.</p><p class="outcome">18 of 18 test leads scored as labelled. About $0.001 per lead.</p><p class="row-links"><a href="demos/n8n-lead-automation/">Details</a><button type="button" data-video="assets/video/n8n-leads.mp4" aria-label="Watch the video: Lead automation in n8n, 1 minute 27 seconds">Watch · 1:27</button><a href="https://github.com/cesicobrad/n8n-automations" aria-label="Code for Lead automation in n8n on GitHub">Code ↗</a></p></div>
       </div>
-    </li>
-    <li class="row" id="demo-srauf">
-      <div class="row-name">
-        <h3><a href="demos/ai-chat-assistant/">Bike workshop assistant</a></h3>
-        <p class="kind">Python · n8n · Claude</p>
+    </details>
+    <details class="row no-media" id="kvant">
+      <summary>
+        <span class="num" aria-hidden="true">07</span>
+        <span class="name"><span class="title">Kvant document assistant</span><span class="kind">Qdrant · Ollama · hybrid search</span></span>
+        <span class="line">Answers questions about a company&#x27;s documents.</span>
+        <span class="fig"><b>15/15</b><small>test questions</small></span>
+        <span class="plus" aria-hidden="true"></span>
+      </summary>
+      <div class="row-open">
+        
+        <div class="row-body"><p>Answers in Slovenian or English with links to the sources. Runs on the company&#x27;s own computer, so documents never leave it.</p><p class="outcome">15 of 15 test questions and 11 of 11 new ones answered correctly.</p><p class="row-links"><a href="https://github.com/cesicobrad/kvant-assistant" aria-label="Code for Kvant document assistant on GitHub">Code ↗</a></p></div>
       </div>
-      <div class="row-body">
-        <p>A chat assistant for a bike workshop. It answers prices and opening hours in three languages, passes repairs to staff with the customer's photos, and sends quotes the customer can accept.</p>
-        <p class="outcome">77 automated checks and 45 steps through n8n pass.</p>
-        <p class="row-links"><a href="demos/ai-chat-assistant/">Details</a><button type="button" data-video="assets/video/srauf.mp4" aria-label="Watch the video: bike workshop assistant, 1 minute 40 seconds">Watch · 1:40</button><a href="https://github.com/cesicobrad/srauf-workshop" aria-label="Code for the bike workshop assistant on GitHub">Code ↗</a></p>
+    </details>
+    <details class="row no-media" id="microsoft">
+      <summary>
+        <span class="num" aria-hidden="true">08</span>
+        <span class="name"><span class="title">Microsoft 365 and Power Platform</span><span class="kind">Power Apps · Power Automate · SharePoint · Azure OpenAI</span></span>
+        <span class="line">Apps and flows for teams on Microsoft 365.</span>
+        <span class="fig"><small>Client work</small></span>
+        <span class="plus" aria-hidden="true"></span>
+      </summary>
+      <div class="row-open">
+        
+        <div class="row-body"><p>Power Apps that replace spreadsheets and paper forms, Power Automate flows for email intake and approvals, and Azure OpenAI connected to Outlook, Teams and OneDrive.</p></div>
       </div>
-    </li>
-    <li class="row" id="demo-docs">
-      <div class="row-name">
-        <h3><a href="demos/invoice-data-extraction/">Document extraction</a></h3>
-        <p class="kind">Python · Claude · Streamlit</p>
-      </div>
-      <div class="row-body">
-        <p>Turns invoices from email, PDF or photo into structured data. Totals are checked in code and a person approves each record.</p>
-        <p class="outcome">103 of 103 fields correct. About $0.001 per document.</p>
-        <p class="row-links"><a href="demos/invoice-data-extraction/">Details</a><button type="button" data-video="assets/video/doc-extraction.mp4" aria-label="Watch the video: document extraction, 1 minute 9 seconds">Watch · 1:09</button><a href="https://github.com/cesicobrad/doc-extraction" aria-label="Code for the document extraction on GitHub">Code ↗</a></p>
-      </div>
-    </li>
-    <li class="row extra" id="demo-n8n">
-      <div class="row-name">
-        <h3><a href="demos/n8n-lead-automation/">Lead automation in n8n</a></h3>
-        <p class="kind">n8n · Claude</p>
-      </div>
-      <div class="row-body">
-        <p>Reads each enquiry and the sender's website, scores the lead and drafts a reply. Nothing is sent until a person approves it.</p>
-        <p class="outcome">18 of 18 test leads scored as labelled. About $0.001 per lead.</p>
-        <p class="row-links"><a href="demos/n8n-lead-automation/">Details</a><button type="button" data-video="assets/video/n8n-leads.mp4" aria-label="Watch the video: lead automation in n8n, 1 minute 27 seconds">Watch · 1:27</button><a href="https://github.com/cesicobrad/n8n-automations" aria-label="Code for the n8n lead automation on GitHub">Code ↗</a></p>
-      </div>
-    </li>
-    <li class="row extra" id="kvant">
-      <div class="row-name">
-        <h3>Kvant document assistant</h3>
-        <p class="kind">Qdrant · Ollama · hybrid search</p>
-      </div>
-      <div class="row-body">
-        <p>Answers questions about a company's documents in Slovenian or English, with links to the sources. Runs on the company's own computer.</p>
-        <p class="outcome">15 of 15 test questions and 11 of 11 new ones answered correctly.</p>
-        <p class="row-links"><a href="https://github.com/cesicobrad/kvant-assistant" aria-label="Code for the Kvant document assistant on GitHub">Code ↗</a></p>
-      </div>
-    </li>
-    <li class="row extra" id="microsoft">
-      <div class="row-name">
-        <h3>Microsoft 365 and Power Platform</h3>
-        <p class="kind">Power Apps · Power Automate · SharePoint · Azure OpenAI</p>
-      </div>
-      <div class="row-body">
-        <p>Client work: Power Apps that replace spreadsheets and paper forms, Power Automate flows for email intake and approvals, and Azure OpenAI connected to Outlook, Teams and OneDrive.</p>
-      </div>
-    </li>
-  </ol>
-  <button class="more-btn" type="button" id="more-btn" aria-controls="rows" aria-expanded="false" hidden>Show 3 more</button>
+    </details>
+  </div>
 </section>
 
 <section class="section wrap" id="apps">
@@ -226,7 +243,7 @@
 </main>
 
 <footer class="wrap"><span>© 2026 Obrad Ćešić</span><a href="#">Back to top ↑</a></footer>
-<script src="app.js?v=rows-1" defer></script>
+<script src="app.js?v=index-1" defer></script>
 <script src="sculpture.js?v=2" defer></script>
 </body>
 </html>
