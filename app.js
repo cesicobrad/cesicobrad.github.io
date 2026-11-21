@@ -21,25 +21,20 @@
   document.head.appendChild(s);
 })();
 
-// Work filters: show one kind of project at a time. Without JS everything is shown and the bar stays hidden.
+// Work list: show the first rows, the rest behind "Show more". Without JS every row is shown.
 (() => {
-  const bar = document.querySelector('.filters');
-  if (!bar) return;
-  const items = [...document.querySelectorAll('#work [data-tags]')];
-  const groups = [...document.querySelectorAll('#work .group')];
-  const grid = document.querySelector('#work .demos');
-  const has = (el, f) => el.dataset.tags.split(' ').includes(f);
-  const buttons = [...bar.querySelectorAll('button')];
-  buttons.forEach((b) => {
-    const f = b.dataset.filter;
-    const n = f === 'all' ? items.length : items.filter((i) => has(i, f)).length;
-    b.insertAdjacentHTML('beforeend', `<span class="n">${n}</span>`);
-    b.addEventListener('click', () => {
-      buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-      items.forEach((i) => { i.hidden = f !== 'all' && !has(i, f); });
-      groups.forEach((g) => { g.hidden = !g.querySelector('[data-tags]:not([hidden])'); });
-      grid.classList.toggle('filtered', f !== 'all');
-    });
+  const rows = document.getElementById('rows');
+  const btn = document.getElementById('more-btn');
+  if (!rows || !btn) return;
+  const extra = rows.querySelectorAll('.extra').length;
+  if (!extra) return;
+  // A link straight to a hidden row (for example #kvant) opens with the full list.
+  if (rows.querySelector('.extra:target')) return;
+  rows.classList.add('collapsed');
+  btn.hidden = false;
+  btn.addEventListener('click', () => {
+    const open = rows.classList.toggle('collapsed') === false;
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'Show fewer' : `Show ${extra} more`;
   });
-  bar.hidden = false;
 })();

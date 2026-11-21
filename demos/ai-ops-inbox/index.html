@@ -26,6 +26,7 @@ html { scroll-behavior:smooth; }
 body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 var(--sans); -webkit-font-smoothing:antialiased; }
 .wrap { max-width:1228px; margin:0 auto; padding:0 24px; }
 header.hero { padding:20px 0 28px; }
+.links { margin:-10px 0 28px; font-weight:500; } .links a { color:var(--accent); text-decoration:none; } .links a:hover { text-decoration:underline; }
 .kicker { font-size:14px; color:var(--muted); margin:0 0 12px; }
 h1 { font:400 clamp(34px, 5vw, 54px)/1.08 var(--display); color:var(--ink); margin:0 0 18px; letter-spacing:-.012em; }
 .lead { font-size:19px; color:var(--muted); max-width:760px; margin:0 0 28px; }
@@ -126,20 +127,21 @@ footer a { color:var(--muted); }
 <p class="crumb"><a href="../../#work">← All work</a></p>
 <header class="hero">
   <p class="kicker">n8n · Outlook and Teams · Gmail and Slack · Claude</p>
-  <h1>Every email sorted, filed and flagged. Nothing deleted, nothing sent.</h1>
-  <p class="lead">A shared office inbox gets quotes, site paperwork, invoices, worker documents, letters from authorities, spam and scams, in three languages. These n8n workflows read each email, put it in the right folder, pull out the deadline and the amount, add the sender to the CRM, create a task with an owner, and alert the team in Teams or Slack when something is urgent.</p>
+  <h1>AI operations inbox</h1>
+  <p class="lead">n8n workflows that sort a shared Outlook or Gmail inbox. Each email is filed in a folder, the deadline and amount are extracted, the sender is added to the CRM, a task is created for the right person, and urgent mail is posted to Teams or Slack. The workflows never delete, reply or forward.</p>
+  <p class="links"><a href="https://github.com/cesicobrad/ai-ops-inbox">Code on GitHub ↗</a></p>
   <div class="big">
     <div class="ok"><b>100</b><span>of 100 test emails filed in the right folder, in German, Serbian and English</span></div>
-    <div class="ok"><b>79</b><span>of 93 real business emails filed right, 11 held for a person, 3 wrong</span></div>
-    <div class="zero"><b>0</b><span>of 550 real spam and phishing emails got through</span></div>
-    <div class="ok"><b>136</b><span>of 136 automated tests pass, with failures injected on purpose</span></div>
+    <div class="ok"><b>79</b><span>of 93 real business emails filed correctly, 11 sent to a person, 3 wrong</span></div>
+    <div class="zero"><b>0</b><span>of 550 real spam and phishing emails filed as work</span></div>
+    <div class="ok"><b>136</b><span>of 136 automated tests pass</span></div>
   </div>
   <p class="fine">The test set: 100 synthetic emails for a fictional electrical contractor, 50 German, 26 Serbian, 24 English, including 21 phishing mails, fake invoices and emails that try to instruct the AI. The real mail: 1050 emails from public research archives; the business mail is from Enron inboxes, graded against two independent AI labellers. Models: claude-haiku-5-5 reads first, claude-sonnet-5-5 gives the second reading.</p>
 <figure class="shot"><img src="img/console-after.webp" width="2000" height="1205" alt="The demo console after the run: totals across the top, the Outlook folders with counts, an email with the decision made for it, and Teams alert cards for urgent mail"><figcaption>The demo console after sorting the test set: the mailbox with its folders, the decision for each email, and the alerts in Teams.</figcaption></figure>
 </header>
 
-<h2>How one email is decided</h2>
-<p>Cheap and certain checks come first. The AI is asked only when it is needed, and it never has the last word on anything doubtful.</p>
+<h2>How an email is handled</h2>
+<p>Safety checks and fixed rules run first. Claude is asked only when they cannot decide, and unclear cases go to a person.</p>
 <div class="steps">
   <div class="step"><i>Step 1</i><h3>Safety screen</h3><p>Text aimed at an AI, text hidden in the HTML, changed bank details and lookalike senders go straight to "To check". The AI never sees them. <b class="n">17 emails</b>, with attachment-only mail from strangers.</p></div>
   <div class="step"><i>Step 2</i><h3>Fixed rules</h3><p>Known senders (the wholesaler's billing address, the tax adviser, the site portal, automatic replies) are filed by rule. <b class="n">22 emails</b>.</p></div>
@@ -147,8 +149,8 @@ footer a { color:var(--muted); }
   <div class="step"><i>Step 4</i><h3>Confidence check</h3><p>A suspicious verdict or an answer that fails validation: "To check". Below 0.8 confidence, a second model reads the email on its own, and it is filed only if both agree.</p></div>
 </div>
 
-<h2>Look at the 100 emails</h2>
-<p>The real test set and the recorded decisions of the main run. Pick an email to see what arrived, where it went, who decided and why.</p>
+<h2>The 100 test emails</h2>
+<p>The test set with the decisions from the main run. Select an email to see where it went and why.</p>
 <div class="filters" id="filters"></div>
 <div class="explorer">
   <div class="list" id="list"></div>
@@ -158,8 +160,8 @@ footer a { color:var(--muted); }
   </div>
 </div>
 
-<h2>The proof</h2>
-<p>Every number on this page is read from the result files of the project.</p>
+<h2>Results</h2>
+<p>All numbers come from the result files in the repository.</p>
 <div class="grid2">
   <div class="panel">
     <h3>By kind of email</h3>
@@ -177,8 +179,8 @@ footer a { color:var(--muted); }
 </div>
 <div class="grid3">
   <div class="panel stat"><b>0 of 21</b><span>phishing mails, fake invoices and instruction attempts filed as real work. 13 were stopped before the AI saw them, 8 by the AI. None raised an alert or entered the CRM.</span></div>
-  <div class="panel stat"><b>21 of 21</b><span>of those same emails held by the AI alone when the safety screen was switched off on purpose. Two layers, each enough without the other.</span></div>
-  <div class="panel stat"><b>25 of 100</b><span>emails needed no AI call at all: rules and the safety screen decided them. Less cost, and nothing to get wrong.</span></div>
+  <div class="panel stat"><b>21 of 21</b><span>of those same emails held by the AI alone when the safety screen was switched off on purpose.</span></div>
+  <div class="panel stat"><b>25 of 100</b><span>emails needed no AI call at all: rules and the safety screen decided them.</span></div>
 </div>
 <div class="grid2">
   <div class="panel">
@@ -188,25 +190,25 @@ footer a { color:var(--muted); }
     <tr><td>Amount, where the email states one</td><td class="num">19 of 19</td></tr><tr><td>Deadline, where the email states one</td><td class="num">43 of 43</td></tr><tr><td>Company</td><td class="num">52 of 53</td></tr><tr><td>Urgency</td><td class="num">66 of 67</td></tr><tr><td>Language</td><td class="num">75 of 75</td></tr></table>
   </div>
   <div class="panel">
-    <h3>The confidence dial</h3>
+    <h3>Confidence threshold</h3>
     <p>The same recorded answers, replayed with other thresholds. Raising it sends more mail to a person. The demo uses 0.8.</p>
     <table><tr><th>Threshold</th><th class="num">Correct</th><th>To check</th><th class="num">Wrong</th></tr>
     <tr><td>0.5</td><td class="num">100</td><td><div style="display:flex;align-items:center;gap:8px"><div class="bar" style="width:0px"></div>0</div></td><td class="num">0</td></tr><tr><td>0.6</td><td class="num">100</td><td><div style="display:flex;align-items:center;gap:8px"><div class="bar" style="width:0px"></div>0</div></td><td class="num">0</td></tr><tr><td>0.7</td><td class="num">100</td><td><div style="display:flex;align-items:center;gap:8px"><div class="bar" style="width:0px"></div>0</div></td><td class="num">0</td></tr><tr><td>0.75</td><td class="num">100</td><td><div style="display:flex;align-items:center;gap:8px"><div class="bar" style="width:0px"></div>0</div></td><td class="num">0</td></tr><tr><td><b>0.8</b></td><td class="num">100</td><td><div style="display:flex;align-items:center;gap:8px"><div class="bar" style="width:0px"></div>0</div></td><td class="num">0</td></tr><tr><td>0.85</td><td class="num">99</td><td><div style="display:flex;align-items:center;gap:8px"><div class="bar" style="width:3px"></div>1</div></td><td class="num">0</td></tr><tr><td>0.9</td><td class="num">89</td><td><div style="display:flex;align-items:center;gap:8px"><div class="bar" style="width:32px"></div>11</div></td><td class="num">0</td></tr><tr><td>0.95</td><td class="num">59</td><td><div style="display:flex;align-items:center;gap:8px"><div class="bar" style="width:120px"></div>41</div></td><td class="num">0</td></tr></table>
   </div>
 </div>
 
-<h2>Through the real workflows</h2>
+<h2>Run through n8n</h2>
 <p>The same 100 emails, delivered to stand-ins that speak the Microsoft Graph and Gmail APIs, and processed by n8n 2.44.6.</p>
 <div class="grid3">
   <div class="panel stat"><b>100 of 100</b><span>filed by n8n exactly as in the scored run. 80 through Outlook, 20 through Gmail.</span></div>
   <div class="panel stat"><b>52</b><span>CRM contacts from 59 emails: one per address, no duplicates. 87 task rows, 49 with a deadline.</span></div>
-  <div class="panel stat"><b>18</b><span>urgent or due-soon emails alerted in Teams, and the same 18 in Slack. Pressing "Run now" again changed nothing.</span></div>
+  <div class="panel stat"><b>18</b><span>urgent or due-soon emails alerted in Teams, and the same 18 in Slack. A second run changed nothing.</span></div>
 </div>
 <figure><img src="img/wf3-triage-and-filing.webp" width="2000" height="892" alt="The triage and filing workflow in the n8n editor: read the decision log, screen and apply rules, ask Claude where needed, set the Outlook category and move the email or label it in Gmail, upsert the CRM contact, alert Teams and Slack, append the decision log and the task rows" loading="lazy"><figcaption>The shared triage workflow in n8n. Two small intake workflows feed it, one for Outlook and one for Gmail.</figcaption></figure>
 
 
 
-<h2>Checked on real mail</h2>
+<h2>Real email</h2>
 <p>The same triage on real emails from public research archives: phishing received in 2025, spam, newsletters, and business mail from Enron inboxes.</p>
 <div class="grid3">
   <div class="panel stat"><b>0 of 550</b><span>real spam and phishing emails filed as real work. 0 raised an alert, 0 entered the CRM.</span></div>
@@ -214,26 +216,26 @@ footer a { color:var(--muted); }
   <div class="panel stat"><b>0 of 1050</b><span>real emails failed to process: odd encodings, broken headers and heavy HTML included.</span></div>
 </div>
 <div class="grid2" style="margin-top:14px"><div class="panel">
-  <h3>A second reading when the AI is unsure</h3>
+  <h3>Second reading</h3>
   <p>Real inboxes are full of bare forwards and one-line replies. When the first reader is not sure, a second model reads the same email on its own, without seeing the first answer. The email is filed only if both pick the same folder; otherwise a person decides.</p>
   <table><tr><th>Real business mail</th><th class="num">Correct</th><th class="num">To check</th><th class="num">Wrong</th></tr>
   <tr><td>One reading</td><td class="num">72</td><td class="num">19</td><td class="num">2</td></tr><tr><td><b>With the second reading</b></td><td class="num"><b>79</b></td><td class="num"><b>11</b></td><td class="num"><b>3</b></td></tr></table>
 </div><div class="panel">
-  <h3>Any business, its own folders</h3>
+  <h3>Configurable folders</h3>
   <p>Folders, owners, rules and thresholds are configuration, not code. The business mail above was sorted with a second configuration written for that mailbox (deals, legal, finance, people, meetings, personal), with no change to the workflows.</p>
   <p>Archives: Enron corpus, SpamAssassin public corpus, Nazario phishing corpus (CC BY 4.0). The real emails are not part of this page or the repository; only the counts are.</p>
 </div></div>
 
-<h2>What it never does</h2>
-<p>The workflows can set a category, move an email to a folder and add a label. That is the whole list.</p>
+<h2>Permissions</h2>
+<p>The workflows can set a category, move an email to a folder and add a label. Nothing else.</p>
 <div class="never">
-  <div><b>Never deletes</b>100 emails in, 100 emails still there. 0 delete attempts recorded.</div>
-  <div><b>Never replies or forwards</b>No send step exists in the pack. It asks only for permission to read and organise mail.</div>
-  <div><b>Never marks as read</b>0 emails marked as read. A person still sees what is new.</div>
-  <div><b>Never guesses quietly</b>Every email gets a row in the decision log: rule or AI, confidence, reason, time.</div>
+  <div><b>No deleting</b>100 emails in, 100 emails still there. 0 delete attempts recorded.</div>
+  <div><b>No sending</b>No send step exists in the pack. It asks only for permission to read and organise mail.</div>
+  <div><b>No marking as read</b>0 emails marked as read. A person still sees what is new.</div>
+  <div><b>Every decision logged</b>Every email gets a row in the decision log: rule or AI, confidence, reason, time.</div>
 </div>
 
-<h2>Tested like software</h2>
+<h2>Tests</h2>
 <p>Failures are injected on purpose: Claude down, a garbled AI answer, Outlook refusing the move, Teams down, the CRM down, the log sheet down.</p>
 <div class="grid3">
   <div class="panel stat"><b>136 of 136</b><span>automated tests pass: 91 triage logic (unit), 15 workflow files (static checks), 8 texts match the results (docs), 22 end to end on n8n with injected failures.</span></div>
@@ -243,7 +245,7 @@ footer a { color:var(--muted); }
 
 <div class="cta">
   <div>
-    <h2>Want this for your inbox?</h2>
+    <h2>Need something similar?</h2>
     <p>Tell me how your team handles email now. I reply within a day and give a fixed quote.</p>
   </div>
   <div class="actions">
@@ -254,7 +256,7 @@ footer a { color:var(--muted); }
 </main>
 <footer>
   <p>All data is synthetic. Brenik Elektromontage GmbH is a fictional company; every name, address, VAT ID and IBAN is made up, and every email domain ends in .example. The services (Outlook, Gmail, Teams, Slack, CRM, Sheets) are local stand-ins that keep the request format of the real ones, so going live is a change of address and credentials.</p>
-  <p>Built with Claude Code. <a href="../../">Obrad Ćešić</a> set the goal, the tests and the direction.</p>
+  <p>Built with Claude Code. <a href="../../">Obrad Ćešić</a> set the goal, the tests and the direction. Code: <a href="https://github.com/cesicobrad/ai-ops-inbox">github.com/cesicobrad/ai-ops-inbox</a>.</p>
 </footer>
 </div>
 
