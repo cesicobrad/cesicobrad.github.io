@@ -106,7 +106,7 @@ h3{font:400 23px/1.25 var(--display);color:var(--ink);letter-spacing:-.005em}
 /* Apps */
 .apps{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:40px}
 .app{display:grid;grid-template-columns:180px 1fr;gap:30px;align-items:start}
-.shot{position:relative;border:1px solid var(--line);padding:6px;cursor:pointer;border-radius:24px;background:var(--raised);box-shadow:0 16px 34px -22px #17161a40;transition:transform .25s ease,box-shadow .25s ease}
+.shot{display:block;position:relative;border:1px solid var(--line);padding:6px;cursor:pointer;border-radius:24px;background:var(--raised);box-shadow:0 16px 34px -22px #17161a40;transition:transform .25s ease,box-shadow .25s ease}
 .shot:hover{transform:translateY(-3px);box-shadow:0 22px 40px -22px #17161a55}
 .shot img{width:100%;border-radius:18px}
 .shot .dur{left:50%;bottom:16px;transform:translateX(-50%);white-space:nowrap;background:var(--raised);color:var(--ink);border:1px solid var(--line)}
